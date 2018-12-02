@@ -7,11 +7,7 @@
 	<artifactId>cart-abandonment-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
-	<properties>
-		<docker.image.prefix>springio</docker.image.prefix>
-	</properties>
-
+	
 	<name>cart-abandonment-service</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -26,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<docker.image.prefix>springio</docker.image.prefix>
 	</properties>
 
 	<dependencies>
