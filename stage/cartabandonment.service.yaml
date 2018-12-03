@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-abandonment
+  namespace: stage
+  labels:
+    app: cart-abandonment
+  annotations:
+    auth.istio.io/80: NONE
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 9876
+  selector:
+    app: cart-abandonment
