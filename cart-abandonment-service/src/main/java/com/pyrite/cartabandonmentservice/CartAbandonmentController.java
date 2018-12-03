@@ -49,7 +49,7 @@ public class CartAbandonmentController
 	{
 		final String json = IOUtils.toString(request.getInputStream(), "UTF-8");
 
-		EventUtil.parseEventList(json, eventHandler);
+		EventUtil.parseMessages(json, eventHandler);
 
 		return "Processed";
 	}
