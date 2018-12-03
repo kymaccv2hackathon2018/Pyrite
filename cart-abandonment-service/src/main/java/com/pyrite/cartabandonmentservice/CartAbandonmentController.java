@@ -27,6 +27,13 @@ public class CartAbandonmentController
 		return "What's up?";
 	}
 
+	@RequestMapping("/hey")
+	@ResponseBody
+	public String hey()
+	{
+		return "Another test endpoint";
+	}
+	
 	@RequestMapping("/events")
 	@ResponseBody
 	public String events()
@@ -40,7 +47,7 @@ public class CartAbandonmentController
 
 	@Override 
 	public void handleProductCreated(CommerceProtos.ProductCreated event) {
-
 	}
+
 }
 

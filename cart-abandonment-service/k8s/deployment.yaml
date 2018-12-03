@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: stage
+  name: cart-abandonment
+  labels:
+    app: cart-abandonment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart-abandonment
+  template:
+    metadata:
+      name: cart-abandonment
+      labels:
+        app: cart-abandonment
+    spec:
+      containers:
+      - name: cart-abandonment
+        image: pyrite.azurecr.io/cart-abandonment-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9876
+          name: http
+      serviceAccount: pyrite
+      serviceAccountName: pyrite
