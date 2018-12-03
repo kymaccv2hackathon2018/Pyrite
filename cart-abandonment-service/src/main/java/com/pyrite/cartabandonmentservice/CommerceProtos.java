@@ -2028,6 +2028,19 @@ public final class CommerceProtos {
      * <code>.ProductAddToCart product_add_to_cart = 8;</code>
      */
     com.pyrite.cartabandonmentservice.CommerceProtos.ProductAddToCartOrBuilder getProductAddToCartOrBuilder();
+
+    /**
+     * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+     */
+    boolean hasCartSuccessfulCheckout();
+    /**
+     * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+     */
+    com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout getCartSuccessfulCheckout();
+    /**
+     * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+     */
+    com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckoutOrBuilder getCartSuccessfulCheckoutOrBuilder();
   }
   /**
    * Protobuf type {@code Event}
@@ -2136,6 +2149,19 @@ public final class CommerceProtos {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(productAddToCart_);
                 productAddToCart_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 74: {
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.Builder subBuilder = null;
+              if (cartSuccessfulCheckout_ != null) {
+                subBuilder = cartSuccessfulCheckout_.toBuilder();
+              }
+              cartSuccessfulCheckout_ = input.readMessage(com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cartSuccessfulCheckout_);
+                cartSuccessfulCheckout_ = subBuilder.buildPartial();
               }
 
               break;
@@ -2450,6 +2476,27 @@ public final class CommerceProtos {
       return getProductAddToCart();
     }
 
+    public static final int CART_SUCCESSFUL_CHECKOUT_FIELD_NUMBER = 9;
+    private com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout cartSuccessfulCheckout_;
+    /**
+     * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+     */
+    public boolean hasCartSuccessfulCheckout() {
+      return cartSuccessfulCheckout_ != null;
+    }
+    /**
+     * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+     */
+    public com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout getCartSuccessfulCheckout() {
+      return cartSuccessfulCheckout_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.getDefaultInstance() : cartSuccessfulCheckout_;
+    }
+    /**
+     * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+     */
+    public com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckoutOrBuilder getCartSuccessfulCheckoutOrBuilder() {
+      return getCartSuccessfulCheckout();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2481,6 +2528,9 @@ public final class CommerceProtos {
       }
       if (productAddToCart_ != null) {
         output.writeMessage(8, getProductAddToCart());
+      }
+      if (cartSuccessfulCheckout_ != null) {
+        output.writeMessage(9, getCartSuccessfulCheckout());
       }
       unknownFields.writeTo(output);
     }
@@ -2514,6 +2564,10 @@ public final class CommerceProtos {
       if (productAddToCart_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, getProductAddToCart());
+      }
+      if (cartSuccessfulCheckout_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getCartSuccessfulCheckout());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2557,6 +2611,11 @@ public final class CommerceProtos {
         result = result && getProductAddToCart()
             .equals(other.getProductAddToCart());
       }
+      result = result && (hasCartSuccessfulCheckout() == other.hasCartSuccessfulCheckout());
+      if (hasCartSuccessfulCheckout()) {
+        result = result && getCartSuccessfulCheckout()
+            .equals(other.getCartSuccessfulCheckout());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2589,6 +2648,10 @@ public final class CommerceProtos {
       if (hasProductAddToCart()) {
         hash = (37 * hash) + PRODUCT_ADD_TO_CART_FIELD_NUMBER;
         hash = (53 * hash) + getProductAddToCart().hashCode();
+      }
+      if (hasCartSuccessfulCheckout()) {
+        hash = (37 * hash) + CART_SUCCESSFUL_CHECKOUT_FIELD_NUMBER;
+        hash = (53 * hash) + getCartSuccessfulCheckout().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2755,6 +2818,12 @@ public final class CommerceProtos {
           productAddToCart_ = null;
           productAddToCartBuilder_ = null;
         }
+        if (cartSuccessfulCheckoutBuilder_ == null) {
+          cartSuccessfulCheckout_ = null;
+        } else {
+          cartSuccessfulCheckout_ = null;
+          cartSuccessfulCheckoutBuilder_ = null;
+        }
         return this;
       }
 
@@ -2806,6 +2875,11 @@ public final class CommerceProtos {
           result.productAddToCart_ = productAddToCart_;
         } else {
           result.productAddToCart_ = productAddToCartBuilder_.build();
+        }
+        if (cartSuccessfulCheckoutBuilder_ == null) {
+          result.cartSuccessfulCheckout_ = cartSuccessfulCheckout_;
+        } else {
+          result.cartSuccessfulCheckout_ = cartSuccessfulCheckoutBuilder_.build();
         }
         onBuilt();
         return result;
@@ -2872,6 +2946,9 @@ public final class CommerceProtos {
         }
         if (other.hasProductAddToCart()) {
           mergeProductAddToCart(other.getProductAddToCart());
+        }
+        if (other.hasCartSuccessfulCheckout()) {
+          mergeCartSuccessfulCheckout(other.getCartSuccessfulCheckout());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3530,6 +3607,123 @@ public final class CommerceProtos {
           productAddToCart_ = null;
         }
         return productAddToCartBuilder_;
+      }
+
+      private com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout cartSuccessfulCheckout_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout, com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckoutOrBuilder> cartSuccessfulCheckoutBuilder_;
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      public boolean hasCartSuccessfulCheckout() {
+        return cartSuccessfulCheckoutBuilder_ != null || cartSuccessfulCheckout_ != null;
+      }
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout getCartSuccessfulCheckout() {
+        if (cartSuccessfulCheckoutBuilder_ == null) {
+          return cartSuccessfulCheckout_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.getDefaultInstance() : cartSuccessfulCheckout_;
+        } else {
+          return cartSuccessfulCheckoutBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      public Builder setCartSuccessfulCheckout(com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout value) {
+        if (cartSuccessfulCheckoutBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          cartSuccessfulCheckout_ = value;
+          onChanged();
+        } else {
+          cartSuccessfulCheckoutBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      public Builder setCartSuccessfulCheckout(
+          com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.Builder builderForValue) {
+        if (cartSuccessfulCheckoutBuilder_ == null) {
+          cartSuccessfulCheckout_ = builderForValue.build();
+          onChanged();
+        } else {
+          cartSuccessfulCheckoutBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      public Builder mergeCartSuccessfulCheckout(com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout value) {
+        if (cartSuccessfulCheckoutBuilder_ == null) {
+          if (cartSuccessfulCheckout_ != null) {
+            cartSuccessfulCheckout_ =
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.newBuilder(cartSuccessfulCheckout_).mergeFrom(value).buildPartial();
+          } else {
+            cartSuccessfulCheckout_ = value;
+          }
+          onChanged();
+        } else {
+          cartSuccessfulCheckoutBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      public Builder clearCartSuccessfulCheckout() {
+        if (cartSuccessfulCheckoutBuilder_ == null) {
+          cartSuccessfulCheckout_ = null;
+          onChanged();
+        } else {
+          cartSuccessfulCheckout_ = null;
+          cartSuccessfulCheckoutBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.Builder getCartSuccessfulCheckoutBuilder() {
+        
+        onChanged();
+        return getCartSuccessfulCheckoutFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckoutOrBuilder getCartSuccessfulCheckoutOrBuilder() {
+        if (cartSuccessfulCheckoutBuilder_ != null) {
+          return cartSuccessfulCheckoutBuilder_.getMessageOrBuilder();
+        } else {
+          return cartSuccessfulCheckout_ == null ?
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.getDefaultInstance() : cartSuccessfulCheckout_;
+        }
+      }
+      /**
+       * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout, com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckoutOrBuilder> 
+          getCartSuccessfulCheckoutFieldBuilder() {
+        if (cartSuccessfulCheckoutBuilder_ == null) {
+          cartSuccessfulCheckoutBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout, com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckoutOrBuilder>(
+                  getCartSuccessfulCheckout(),
+                  getParentForChildren(),
+                  isClean());
+          cartSuccessfulCheckout_ = null;
+        }
+        return cartSuccessfulCheckoutBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9055,6 +9249,16 @@ public final class CommerceProtos {
      */
     com.google.protobuf.ByteString
         getUserIdBytes();
+
+    /**
+     * <code>string event_time = 5;</code>
+     */
+    java.lang.String getEventTime();
+    /**
+     * <code>string event_time = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getEventTimeBytes();
   }
   /**
    * Protobuf type {@code ProductAddToCart}
@@ -9073,6 +9277,7 @@ public final class CommerceProtos {
       cartId_ = "";
       productId_ = "";
       userId_ = "";
+      eventTime_ = "";
     }
 
     @java.lang.Override
@@ -9121,6 +9326,12 @@ public final class CommerceProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               userId_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              eventTime_ = s;
               break;
             }
             default: {
@@ -9291,6 +9502,40 @@ public final class CommerceProtos {
       }
     }
 
+    public static final int EVENT_TIME_FIELD_NUMBER = 5;
+    private volatile java.lang.Object eventTime_;
+    /**
+     * <code>string event_time = 5;</code>
+     */
+    public java.lang.String getEventTime() {
+      java.lang.Object ref = eventTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        eventTime_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string event_time = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEventTimeBytes() {
+      java.lang.Object ref = eventTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        eventTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9317,6 +9562,9 @@ public final class CommerceProtos {
       if (!getUserIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, userId_);
       }
+      if (!getEventTimeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, eventTime_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -9337,6 +9585,9 @@ public final class CommerceProtos {
       }
       if (!getUserIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, userId_);
+      }
+      if (!getEventTimeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, eventTime_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9362,6 +9613,8 @@ public final class CommerceProtos {
           .equals(other.getProductId());
       result = result && getUserId()
           .equals(other.getUserId());
+      result = result && getEventTime()
+          .equals(other.getEventTime());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -9381,6 +9634,8 @@ public final class CommerceProtos {
       hash = (53 * hash) + getProductId().hashCode();
       hash = (37 * hash) + USER_ID_FIELD_NUMBER;
       hash = (53 * hash) + getUserId().hashCode();
+      hash = (37 * hash) + EVENT_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getEventTime().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9522,6 +9777,8 @@ public final class CommerceProtos {
 
         userId_ = "";
 
+        eventTime_ = "";
+
         return this;
       }
 
@@ -9552,6 +9809,7 @@ public final class CommerceProtos {
         result.cartId_ = cartId_;
         result.productId_ = productId_;
         result.userId_ = userId_;
+        result.eventTime_ = eventTime_;
         onBuilt();
         return result;
       }
@@ -9614,6 +9872,10 @@ public final class CommerceProtos {
         }
         if (!other.getUserId().isEmpty()) {
           userId_ = other.userId_;
+          onChanged();
+        }
+        if (!other.getEventTime().isEmpty()) {
+          eventTime_ = other.eventTime_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -9917,6 +10179,75 @@ public final class CommerceProtos {
   checkByteStringIsUtf8(value);
         
         userId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object eventTime_ = "";
+      /**
+       * <code>string event_time = 5;</code>
+       */
+      public java.lang.String getEventTime() {
+        java.lang.Object ref = eventTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          eventTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string event_time = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEventTimeBytes() {
+        java.lang.Object ref = eventTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          eventTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string event_time = 5;</code>
+       */
+      public Builder setEventTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        eventTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_time = 5;</code>
+       */
+      public Builder clearEventTime() {
+        
+        eventTime_ = getDefaultInstance().getEventTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_time = 5;</code>
+       */
+      public Builder setEventTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        eventTime_ = value;
         onChanged();
         return this;
       }
@@ -11009,37 +11340,39 @@ public final class CommerceProtos {
       "ent_type_version\030\003 \001(\tR\022event-type-versi" +
       "on\022\036\n\nevent_time\030\004 \001(\tR\nevent-type\022\024\n\004da" +
       "ta\030\005 \001(\0132\006.Event\"(\n\013MessageList\022\031\n\007messa" +
-      "ge\030\001 \003(\0132\010.Message\"\314\003\n\005Event\022\031\n\004type\030\001 \001" +
+      "ge\030\001 \003(\0132\010.Message\"\207\004\n\005Event\022\031\n\004type\030\001 \001" +
       "(\0162\013.Event.Type\022*\n\020customer_created\030\004 \001(" +
       "\0132\020.CustomerCreated\022\"\n\014site_created\030\005 \001(" +
       "\0132\014.SiteCreated\022(\n\017product_created\030\006 \001(\013" +
       "2\017.ProductCreated\0228\n\030cart_proceed_to_che" +
       "ckout\030\007 \001(\0132\026.CartProceedToCheckout\022.\n\023p" +
       "roduct_add_to_cart\030\010 \001(\0132\021.ProductAddToC" +
-      "art\"\303\001\n\004Type\022\013\n\007UNKNOWN\020\000\022\024\n\020CUSTOMER_CR" +
-      "EATED\020\002\022\020\n\014SITE_CREATED\020\003\022\023\n\017PRODUCT_CRE" +
-      "ATED\020\004\022\034\n\030CART_PROCEED_TO_CHECKOUT\020\005\022\034\n\030" +
-      "CART_SUCCESSFUL_CHECKOUT\020\006\022\027\n\023PRODUCT_AD" +
-      "D_TO_CART\020\007\022\034\n\030PRODUCT_REMOVE_FROM_CART\020" +
-      "\010\"]\n\017CustomerCreated\022\023\n\013customer_id\030\001 \001(" +
-      "\t\022\024\n\014customer_uid\030\002 \001(\t\022\020\n\010store_id\030\003 \001(" +
-      "\t\022\r\n\005email\030\004 \001(\t\"B\n\013SiteCreated\022\017\n\007site_" +
-      "id\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\r\n\005email\030\004" +
-      " \001(\t\"L\n\016ProductCreated\022\022\n\nproduct_id\030\001 \001" +
-      "(\t\022\023\n\013description\030\002 \001(\t\022\021\n\timage_url\030\003 \001" +
-      "(\t\"4\n\013CartCreated\022\017\n\007cart_id\030\001 \001(\t\022\024\n\014ba" +
-      "se_site_id\030\002 \001(\t\"O\n\025CartProceedToCheckou" +
-      "t\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t" +
-      "\022\017\n\007user_id\030\003 \001(\t\"P\n\026CartSuccessfulCheck" +
-      "out\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001" +
-      "(\t\022\017\n\007user_id\030\003 \001(\t\"\020\n\016OrderCancelled\"^\n" +
-      "\020ProductAddToCart\022\024\n\014base_site_id\030\001 \001(\t\022" +
-      "\017\n\007cart_id\030\002 \001(\t\022\022\n\nproduct_id\030\003 \001(\t\022\017\n\007" +
-      "user_id\030\004 \001(\t\"c\n\025ProductRemoveFromCart\022\024" +
-      "\n\014base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\022\n" +
-      "\nproduct_id\030\003 \001(\t\022\017\n\007user_id\030\004 \001(\tB3\n!co" +
-      "m.pyrite.cartabandonmentserviceB\016Commerc" +
-      "eProtosb\006proto3"
+      "art\0229\n\030cart_successful_checkout\030\t \001(\0132\027." +
+      "CartSuccessfulCheckout\"\303\001\n\004Type\022\013\n\007UNKNO" +
+      "WN\020\000\022\024\n\020CUSTOMER_CREATED\020\002\022\020\n\014SITE_CREAT" +
+      "ED\020\003\022\023\n\017PRODUCT_CREATED\020\004\022\034\n\030CART_PROCEE" +
+      "D_TO_CHECKOUT\020\005\022\034\n\030CART_SUCCESSFUL_CHECK" +
+      "OUT\020\006\022\027\n\023PRODUCT_ADD_TO_CART\020\007\022\034\n\030PRODUC" +
+      "T_REMOVE_FROM_CART\020\010\"]\n\017CustomerCreated\022" +
+      "\023\n\013customer_id\030\001 \001(\t\022\024\n\014customer_uid\030\002 \001" +
+      "(\t\022\020\n\010store_id\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\"B\n\013S" +
+      "iteCreated\022\017\n\007site_id\030\001 \001(\t\022\023\n\013descripti" +
+      "on\030\002 \001(\t\022\r\n\005email\030\004 \001(\t\"L\n\016ProductCreate" +
+      "d\022\022\n\nproduct_id\030\001 \001(\t\022\023\n\013description\030\002 \001" +
+      "(\t\022\021\n\timage_url\030\003 \001(\t\"4\n\013CartCreated\022\017\n\007" +
+      "cart_id\030\001 \001(\t\022\024\n\014base_site_id\030\002 \001(\t\"O\n\025C" +
+      "artProceedToCheckout\022\024\n\014base_site_id\030\001 \001" +
+      "(\t\022\017\n\007cart_id\030\002 \001(\t\022\017\n\007user_id\030\003 \001(\t\"P\n\026" +
+      "CartSuccessfulCheckout\022\024\n\014base_site_id\030\001" +
+      " \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\017\n\007user_id\030\003 \001(\t\"\020" +
+      "\n\016OrderCancelled\"r\n\020ProductAddToCart\022\024\n\014" +
+      "base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\022\n\np" +
+      "roduct_id\030\003 \001(\t\022\017\n\007user_id\030\004 \001(\t\022\022\n\neven" +
+      "t_time\030\005 \001(\t\"c\n\025ProductRemoveFromCart\022\024\n" +
+      "\014base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\022\n\n" +
+      "product_id\030\003 \001(\t\022\017\n\007user_id\030\004 \001(\tB3\n!com" +
+      ".pyrite.cartabandonmentserviceB\016Commerce" +
+      "Protosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11070,7 +11403,7 @@ public final class CommerceProtos {
     internal_static_Event_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Event_descriptor,
-        new java.lang.String[] { "Type", "CustomerCreated", "SiteCreated", "ProductCreated", "CartProceedToCheckout", "ProductAddToCart", });
+        new java.lang.String[] { "Type", "CustomerCreated", "SiteCreated", "ProductCreated", "CartProceedToCheckout", "ProductAddToCart", "CartSuccessfulCheckout", });
     internal_static_CustomerCreated_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_CustomerCreated_fieldAccessorTable = new
@@ -11118,7 +11451,7 @@ public final class CommerceProtos {
     internal_static_ProductAddToCart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductAddToCart_descriptor,
-        new java.lang.String[] { "BaseSiteId", "CartId", "ProductId", "UserId", });
+        new java.lang.String[] { "BaseSiteId", "CartId", "ProductId", "UserId", "EventTime", });
     internal_static_ProductRemoveFromCart_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_ProductRemoveFromCart_fieldAccessorTable = new
