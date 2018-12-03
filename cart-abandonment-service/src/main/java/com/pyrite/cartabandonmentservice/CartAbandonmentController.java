@@ -26,5 +26,21 @@ public class CartAbandonmentController
 	{
 		return "What's up?";
 	}
+
+	@RequestMapping("/events")
+	@ResponseBody
+	public String events()
+	{
+		String json = "{ \"event\": [] }";
+
+		EventUtil.parseEventList(json, this);
+
+		return "Processed";
+	}
+
+	@Override 
+	public void handleProductCreated(CommerceProtos.ProductCreated event) {
+
+	}
 }
 

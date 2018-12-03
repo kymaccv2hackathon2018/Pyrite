@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+//option java_package = "github.wdf.sap.pyrite.hackathon";
+option java_package = "com.pyrite.cartabandonmentservice";
+option java_outer_classname = "CommerceProtos";
+
+message EventList {
+    repeated Event event = 1;
+}
+
+message Event {
+
+    // Type is a discriminator for event types
+    enum Type {
+        UNKNOWN = 0;
+        // CART_ABANDONED = 1;
+        CUSTOMER_CREATED = 2;
+        SITE_CREATED = 3;
+        PRODUCT_CREATED = 4;
+        CART_PROCEED_TO_CHECKOUT = 5;
+        CART_SUCCESSFUL_CHECKOUT = 6;
+        PRODUCT_ADD_TO_CART = 7;
+        PRODUCT_REMOVE_FROM_CART = 8;
+    }
+    
+    Type type = 1;
+
+    // CartAbandoned cart_abandoned = 3;
+    CustomerCreated customer_created = 4;
+    SiteCreated site_created = 5;
+    ProductCreated product_created = 6;
+    CartProceedToCheckout cart_proceed_to_checkout = 7;
+    ProductAddToCart product_add_to_cart = 8;
+}
+
+// message CartAbandoned {
+// }
+
+message CustomerCreated {
+    string customerId = 1;
+    string customer_uid = 2;
+    string store_id = 3;
+
+    string email = 4; // fake field
+}
+
+message SiteCreated {
+    string siteId = 1;
+    string siteName = 2;
+
+    string email = 4; // fake field
+}
+
+message ProductCreated {
+    string product_id = 1;
+    string description = 2;
+    string image_url = 3;
+
+}
+
+message CartCreated {
+    string cart_id = 1;
+    string base_site_id = 2;
+}
+
+message CartProceedToCheckout {
+    string base_site_id = 1;
+    string cart_id = 2;
+    string user_id = 3;
+}
+
+message CartSuccessfulCheckout {
+
+}
+
+message OrderCancelled {
+
+}
+
+message ProductAddToCart {
+    string base_site_id = 1;
+    string cart_id = 2;
+    string product_id = 3;
+    string user_id = 4;
+}
+
+message ProductRemoveFromCart {
+    string base_site_id = 1;
+    string cart_id = 2;
+    string product_id = 3;
+    string user_id = 4;
+}
+
+message EventBusMessage {
+    string source_id = 1 [json_name = "source-id"];
+    string event_type = 2 [json_name = "event-type"];
+    string event_type_version = 3 [json_name = "event-type-version"];
+    string event_time = 4 [json_name = "event-type"];
+    Event data = 5;
+}

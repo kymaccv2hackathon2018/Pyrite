@@ -7,3 +7,7 @@ stage-pyrite-pull-secret:
 
 stage-serviceaccount:
 	kubectl -n stage apply -f stage/serviceaccount.yaml
+
+commerce_proto_sources:
+	bazel build cart-abandonment-service:commerce_proto_sources \
+	&& (cd cart-abandonment-service/src/main/java && jar -xvf ../../../../bazel-genfiles/cart-abandonment-service/commerce_proto_sources/commerce_proto_sources.srcjar)

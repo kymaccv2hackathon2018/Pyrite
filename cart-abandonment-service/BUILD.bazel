@@ -1,0 +1,31 @@
+load("@build_stack_rules_proto//java:java_proto_compile.bzl", "java_proto_compile")
+
+java_library(
+    name = "events",
+    srcs = [
+        "src/main/java/com/pyrite/cartabandonmentservice/EventUtil.java",
+    ],
+    deps = [
+        ":commerce_java_proto",
+        "@com_google_protobuf//:protobuf_java_util",
+        "@com_google_protobuf//:protobuf_java",
+    ],
+)
+
+java_binary(
+    name = "eventutil",
+    main_class = "com.pyrite.cartabandonmentservice/EventUtil",
+    runtime_deps = [
+        ":events",
+    ],
+)
+
+java_proto_library(
+    name = "commerce_java_proto",
+    deps = ["//eventgen/proto/commerce:commerce_proto"],
+)
+
+java_proto_compile(
+    name = "commerce_proto_sources",
+    deps = ["//eventgen/proto/commerce:commerce_proto"],
+)

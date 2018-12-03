@@ -1,0 +1,13 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+gazelle(
+    name = "gazelle",
+    args = [
+        "-build_file_name",
+        "BUILD,BUILD.bazel",
+        "-proto",
+        "disable",
+    ],
+    command = "fix",
+    prefix = "github.com/stackb/protolark-go",
+)
