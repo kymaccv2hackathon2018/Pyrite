@@ -22,7 +22,7 @@ message Event {
         PRODUCT_ADD_TO_CART = 7;
         PRODUCT_REMOVE_FROM_CART = 8;
     }
-    
+
     Type type = 1;
 
     // CartAbandoned cart_abandoned = 3;
@@ -82,6 +82,7 @@ message ProductAddToCart {
     string cart_id = 2;
     string product_id = 3;
     string user_id = 4;
+    string asdf = 5;
 }
 
 message ProductRemoveFromCart {
