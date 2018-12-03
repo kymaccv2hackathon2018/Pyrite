@@ -1,0 +1,43 @@
+apiVersion: kubeless.io/v1beta1
+kind: Function
+metadata:
+  finalizers:
+  - kubeless.io/function
+  name: internal-lambda
+  namespace: commerce-samples
+spec:
+  deployment:
+    spec:
+      strategy: {}
+      template:
+        spec:
+          containers:
+          - name: ""
+            resources: {}
+    status: {}
+  deps: ""
+  function: |
+    module.exports = { main: function (event, context) {
+    console.log("Hello! This is internal lambda");
+    console.log("Parameters:" + JSON.stringify(event.data));
+    return "Internal lambda is called"
+    } }
+  function-content-type: text
+  handler: handler.main
+  horizontalPodAutoscaler:
+    spec:
+      maxReplicas: 0
+      scaleTargetRef:
+        kind: ""
+        name: ""
+  runtime: nodejs8
+  service:
+    ports:
+    - name: http-function-port
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      created-by: kubeless
+      function: internal-lambda
+  timeout: ""
