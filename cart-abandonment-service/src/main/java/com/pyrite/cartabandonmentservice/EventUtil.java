@@ -2,9 +2,9 @@ package com.pyrite.cartabandonmentservice;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
-import com.pyrite.cartabandonmentservice.CommerceProtos;
 
-public class EventUtil {
+public class EventUtil
+{
 
     private static final JsonFormat.Printer printer = JsonFormat.printer().includingDefaultValueFields();
     
@@ -15,6 +15,8 @@ public class EventUtil {
         void handleProductCreated(CommerceProtos.Message message, CommerceProtos.ProductCreated e);
         void handleSiteCreated(CommerceProtos.Message message, CommerceProtos.SiteCreated e);
         void handleCustomerCreated(CommerceProtos.Message message, CommerceProtos.CustomerCreated e);
+		void handleProductAddToCart(CommerceProtos.Message message, CommerceProtos.ProductAddToCart e);
+		void handleCartSuccessfulCheckout(CommerceProtos.Message message, CommerceProtos.CartSuccessfulCheckout e);
     }
 
     /**
@@ -67,34 +69,43 @@ public class EventUtil {
             break;
         case PRODUCT_CREATED:
            handler.handleProductCreated(m, e.getProductCreated());
+           break;
+        case PRODUCT_ADD_TO_CART:
+            handler.handleProductAddToCart(m, e.getProductAddToCart());
             break;
-        default:
+        case CART_SUCCESSFUL_CHECKOUT:
+            handler.handleCartSuccessfulCheckout(m, e.getCartSuccessfulCheckout());
+            break;
+         default:
             throw new RuntimeException(String.format("Unknown event: %s", printer.print(e)));
         }
     }
 
-    /**
-     * Main entrypoint can be used to play around with json string parsing/formatting.
-     * 
-     * @param args
-     */
-    public static void main(String[] args) {
-        if (args.length != 1) {
-            System.err.format("Error: raw json string representing an event list should be first argument\n");
-            System.err.format("Usage: $0 '{ \"message\": [...] }'\n");
-            System.exit(1);
-        }
+	/**
+	 * Main entrypoint can be used to play around with json string parsing/formatting.
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args)
+	{
+		if (args.length != 1)
+		{
+			System.err.format("Error: raw json string representing an event list should be first argument\n");
+			System.err.format("Usage: $0 '{ \"event\": [...] }'\n");
+			System.exit(1);
+		}
 
-        String json_string = args[0];
-        CommerceProtos.MessageList.Builder builder = CommerceProtos.MessageList.newBuilder();
+		String json_string = args[0];
+		CommerceProtos.MessageList.Builder builder = CommerceProtos.MessageList.newBuilder();
 
-        try {
-            JsonFormat.parser().merge(json_string, builder);
-            System.out.format("%s\n", printer.print(builder));
-        } catch (InvalidProtocolBufferException ex) {
-            ex.printStackTrace();
-        }
-
-    }
-
+		try
+		{
+			JsonFormat.parser().merge(json_string, builder);
+			System.out.format("%s\n", printer.print(builder));
+		}
+		catch (InvalidProtocolBufferException ex)
+		{
+			ex.printStackTrace();
+		}
+	}
 }

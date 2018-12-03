@@ -29,7 +29,7 @@ message Event {
         PRODUCT_ADD_TO_CART = 7;
         PRODUCT_REMOVE_FROM_CART = 8;
     }
-    
+
     Type type = 1;
 
     CustomerCreated customer_created = 4;
@@ -37,6 +37,7 @@ message Event {
     ProductCreated product_created = 6;
     CartProceedToCheckout cart_proceed_to_checkout = 7;
     ProductAddToCart product_add_to_cart = 8;
+    CartSuccessfulCheckout cart_successful_checkout = 9;
 }
 
 message CustomerCreated {
@@ -87,6 +88,7 @@ message ProductAddToCart {
     string cart_id = 2;
     string product_id = 3;
     string user_id = 4;
+    string event_time = 5;    
 }
 
 message ProductRemoveFromCart {

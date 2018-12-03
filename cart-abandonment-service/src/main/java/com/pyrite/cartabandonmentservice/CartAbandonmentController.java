@@ -11,6 +11,13 @@
  */
 package com.pyrite.cartabandonmentservice;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cartAbandonment")
 public class CartAbandonmentController
 {
+	@Autowired
+	private CartAbandonmentEventHandler eventHandler;
 
 	@RequestMapping("/hello")
 	@ResponseBody
@@ -33,21 +42,16 @@ public class CartAbandonmentController
 	{
 		return "Another test endpoint";
 	}
-	
-	@RequestMapping("/events")
-	@ResponseBody
-	public String events()
-	{
-		String json = "{ \"event\": [] }";
 
-		EventUtil.parseEventList(json, this);
+	@PostMapping("/events")
+	@ResponseBody
+	public String events(final HttpServletRequest request) throws IOException
+	{
+		final String json = IOUtils.toString(request.getInputStream(), "UTF-8");
+
+		EventUtil.parseEventList(json, eventHandler);
 
 		return "Processed";
 	}
-
-	@Override 
-	public void handleProductCreated(CommerceProtos.ProductCreated event) {
-	}
-
 }
 
