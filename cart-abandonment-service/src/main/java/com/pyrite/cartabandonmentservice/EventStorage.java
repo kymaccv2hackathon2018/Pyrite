@@ -18,24 +18,44 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EventStorage
 {
-	private Map<String, List<ProductAddToCart>> addToCartEvents = new LinkedHashMap<>();
+	private Map<String, List<Object>> userEvents = new LinkedHashMap<>();
+
+	private static final Logger log = LoggerFactory.getLogger(AbandonmentScheduler.class);
 
 
 	public void addToCartEvent(final String userId, final ProductAddToCart event)
 	{
-		if (addToCartEvents.containsKey(userId))
+		log.debug("Product added to cart: " + event.toString());
+
+		if (userEvents.containsKey(userId))
 		{
-			addToCartEvents.get(userId).add(event);
+			userEvents.get(userId).add(event);
 		}
 		else
 		{
-			addToCartEvents.put(userId, Arrays.asList(event));
+			userEvents.put(userId, Arrays.asList(event));
 		}
+	}
 
+	public void successfulCheckout(final String userId)
+	{
+		log.debug("Successful checkout for user: " + userId);
+
+		if (userEvents.containsKey(userId))
+		{
+			userEvents.remove(userId);
+		}
+	}
+
+	public Map<String, List<Object>> getUserEvents()
+	{
+		return userEvents;
 	}
 }
