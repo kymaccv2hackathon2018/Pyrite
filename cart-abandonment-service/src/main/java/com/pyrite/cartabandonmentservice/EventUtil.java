@@ -14,6 +14,7 @@ public class EventUtil
     public interface Handler {
         void handleProductCreated(CommerceProtos.Message message, CommerceProtos.ProductCreated e);
         void handleSiteCreated(CommerceProtos.Message message, CommerceProtos.SiteCreated e);
+        void handleCartCreated(CommerceProtos.Message message, CommerceProtos.CartCreated e);
         void handleCustomerCreated(CommerceProtos.Message message, CommerceProtos.CustomerCreated e);
 		void handleProductAddToCart(CommerceProtos.Message message, CommerceProtos.ProductAddToCart e);
 		void handleCartSuccessfulCheckout(CommerceProtos.Message message, CommerceProtos.CartSuccessfulCheckout e);
@@ -66,6 +67,9 @@ public class EventUtil
             break;
         case SITE_CREATED:
             handler.handleSiteCreated(m, e.getSiteCreated());
+            break;
+        case CART_CREATED:
+            handler.handleCartCreated(m, e.getCartCreated());
             break;
         case PRODUCT_CREATED:
            handler.handleProductCreated(m, e.getProductCreated());
