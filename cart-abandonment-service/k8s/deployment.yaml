@@ -1,6 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  namespace: stage
   name: cart-abandonment
   labels:
     app: cart-abandonment
@@ -19,3 +20,5 @@ spec:
       - name: cart-abandonment
         image: pyrite.azurecr.io/cart-abandonment-service:latest
         imagePullPolicy: IfNotPresent
+      serviceAccount: pyrite
+      serviceAccountName: pyrite
