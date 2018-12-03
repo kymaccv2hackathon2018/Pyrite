@@ -26,5 +26,12 @@ public class CartAbandonmentController
 	{
 		return "What's up?";
 	}
+
+	@RequestMapping("/hey")
+	@ResponseBody
+	public String hey()
+	{
+		return "Another test endpoint";
+	}
 }
 
