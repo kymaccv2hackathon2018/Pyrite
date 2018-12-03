@@ -1,7 +1,5 @@
-
 proto_library(
     name = "commerce_proto",
     srcs = ["commerce.proto"],
     visibility = ["//visibility:public"],
 )
-

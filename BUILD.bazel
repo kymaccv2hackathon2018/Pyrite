@@ -9,5 +9,5 @@ gazelle(
         "disable",
     ],
     command = "fix",
-    prefix = "github.com/stackb/protolark-go",
+    prefix = "github.wdf.sap.corp/team-pyrite/hackathon",
 )

@@ -12,9 +12,9 @@ public class EventUtil {
      * Handler is a convenience interface to get typed event callbacks during a JSON.parse cycle.
      */
     public interface Handler {
-        void handleProductCreated(CommerceProtos.ProductCreated e);
-        void handleSiteCreated(CommerceProtos.SiteCreated e);
-        void handleCustomerCreated(CommerceProtos.CustomerCreated e);
+        void handleProductCreated(CommerceProtos.Message message, CommerceProtos.ProductCreated e);
+        void handleSiteCreated(CommerceProtos.Message message, CommerceProtos.SiteCreated e);
+        void handleCustomerCreated(CommerceProtos.Message message, CommerceProtos.CustomerCreated e);
     }
 
     /**
@@ -24,26 +24,26 @@ public class EventUtil {
      * @param handler The Handler callback interface
      * @throws InvalidProtocolBufferException
      */
-    public static void parseEventList(String json, Handler handler) throws InvalidProtocolBufferException {
-        CommerceProtos.EventList.Builder builder = CommerceProtos.EventList.newBuilder();
+    public static void parseMessages(String json, Handler handler) throws InvalidProtocolBufferException {
+        CommerceProtos.MessageList.Builder builder = CommerceProtos.MessageList.newBuilder();
         JsonFormat.parser().merge(json, builder);
 
-        for (CommerceProtos.Event e : builder.build().getEventList()) {
-            handleEvent(e, handler);
+        for (CommerceProtos.Message e : builder.build().getMessageList()) {
+            handleMessage(e, handler);
         }
     }
 
     /**
-     * Parse an event json string and callback the event onto the given Handler interface.
+     * Parse an Message json string and callback the Message onto the given Handler interface.
      * 
      * @param json The raw json string
      * @param handler The Handler callback interface
      * @throws InvalidProtocolBufferException
      */
-    public static void parseEvent(String json, Handler handler) throws InvalidProtocolBufferException {
-        CommerceProtos.Event.Builder builder = CommerceProtos.Event.newBuilder();
+    public static void parseMessage(String json, Handler handler) throws InvalidProtocolBufferException {
+        CommerceProtos.Message.Builder builder = CommerceProtos.Message.newBuilder();
         JsonFormat.parser().merge(json, builder);
-        handleEvent(builder.build(), handler);
+        handleMessage(builder.build(), handler);
     }
 
     /**
@@ -53,18 +53,20 @@ public class EventUtil {
      * @param handler
      * @throws InvalidProtocolBufferException
      */
-    public static void handleEvent(CommerceProtos.Event e, Handler handler) throws InvalidProtocolBufferException {
+    public static void handleMessage(CommerceProtos.Message m, Handler handler) throws InvalidProtocolBufferException {
+        CommerceProtos.Event e = m.getData();
+
         switch (e.getType()) {
         case UNKNOWN:
             break;
         case CUSTOMER_CREATED:
-            handler.handleCustomerCreated(e.getCustomerCreated());
+            handler.handleCustomerCreated(m, e.getCustomerCreated());
             break;
         case SITE_CREATED:
-            handler.handleSiteCreated(e.getSiteCreated());
+            handler.handleSiteCreated(m, e.getSiteCreated());
             break;
         case PRODUCT_CREATED:
-           handler.handleProductCreated(e.getProductCreated());
+           handler.handleProductCreated(m, e.getProductCreated());
             break;
         default:
             throw new RuntimeException(String.format("Unknown event: %s", printer.print(e)));
@@ -79,12 +81,12 @@ public class EventUtil {
     public static void main(String[] args) {
         if (args.length != 1) {
             System.err.format("Error: raw json string representing an event list should be first argument\n");
-            System.err.format("Usage: $0 '{ \"event\": [...] }'\n");
+            System.err.format("Usage: $0 '{ \"message\": [...] }'\n");
             System.exit(1);
         }
 
         String json_string = args[0];
-        CommerceProtos.EventList.Builder builder = CommerceProtos.EventList.newBuilder();
+        CommerceProtos.MessageList.Builder builder = CommerceProtos.MessageList.newBuilder();
 
         try {
             JsonFormat.parser().merge(json_string, builder);

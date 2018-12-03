@@ -14,48 +14,80 @@ public final class CommerceProtos {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface EventListOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:EventList)
+  public interface MessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Message)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string source_id = 1[json_name = "source-id"];</code>
      */
-    java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Event> 
-        getEventList();
+    java.lang.String getSourceId();
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string source_id = 1[json_name = "source-id"];</code>
      */
-    com.pyrite.cartabandonmentservice.CommerceProtos.Event getEvent(int index);
+    com.google.protobuf.ByteString
+        getSourceIdBytes();
+
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string event_type = 2[json_name = "event-type"];</code>
      */
-    int getEventCount();
+    java.lang.String getEventType();
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string event_type = 2[json_name = "event-type"];</code>
      */
-    java.util.List<? extends com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> 
-        getEventOrBuilderList();
+    com.google.protobuf.ByteString
+        getEventTypeBytes();
+
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
      */
-    com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getEventOrBuilder(
-        int index);
+    java.lang.String getEventTypeVersion();
+    /**
+     * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
+     */
+    com.google.protobuf.ByteString
+        getEventTypeVersionBytes();
+
+    /**
+     * <code>string event_time = 4[json_name = "event-type"];</code>
+     */
+    java.lang.String getEventTime();
+    /**
+     * <code>string event_time = 4[json_name = "event-type"];</code>
+     */
+    com.google.protobuf.ByteString
+        getEventTimeBytes();
+
+    /**
+     * <code>.Event data = 5;</code>
+     */
+    boolean hasData();
+    /**
+     * <code>.Event data = 5;</code>
+     */
+    com.pyrite.cartabandonmentservice.CommerceProtos.Event getData();
+    /**
+     * <code>.Event data = 5;</code>
+     */
+    com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getDataOrBuilder();
   }
   /**
-   * Protobuf type {@code EventList}
+   * Protobuf type {@code Message}
    */
-  public  static final class EventList extends
+  public  static final class Message extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:EventList)
-      EventListOrBuilder {
+      // @@protoc_insertion_point(message_implements:Message)
+      MessageOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use EventList.newBuilder() to construct.
-    private EventList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use Message.newBuilder() to construct.
+    private Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private EventList() {
-      event_ = java.util.Collections.emptyList();
+    private Message() {
+      sourceId_ = "";
+      eventType_ = "";
+      eventTypeVersion_ = "";
+      eventTime_ = "";
     }
 
     @java.lang.Override
@@ -63,7 +95,7 @@ public final class CommerceProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private EventList(
+    private Message(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -83,12 +115,40 @@ public final class CommerceProtos {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                event_ = new java.util.ArrayList<com.pyrite.cartabandonmentservice.CommerceProtos.Event>();
-                mutable_bitField0_ |= 0x00000001;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sourceId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              eventType_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              eventTypeVersion_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              eventTime_ = s;
+              break;
+            }
+            case 42: {
+              com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder subBuilder = null;
+              if (data_ != null) {
+                subBuilder = data_.toBuilder();
               }
-              event_.add(
-                  input.readMessage(com.pyrite.cartabandonmentservice.CommerceProtos.Event.parser(), extensionRegistry));
+              data_ = input.readMessage(com.pyrite.cartabandonmentservice.CommerceProtos.Event.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(data_);
+                data_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -106,59 +166,178 @@ public final class CommerceProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          event_ = java.util.Collections.unmodifiableList(event_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventList_descriptor;
+      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_Message_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventList_fieldAccessorTable
+      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_Message_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.pyrite.cartabandonmentservice.CommerceProtos.EventList.class, com.pyrite.cartabandonmentservice.CommerceProtos.EventList.Builder.class);
+              com.pyrite.cartabandonmentservice.CommerceProtos.Message.class, com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder.class);
     }
 
-    public static final int EVENT_FIELD_NUMBER = 1;
-    private java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Event> event_;
+    public static final int SOURCE_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object sourceId_;
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string source_id = 1[json_name = "source-id"];</code>
      */
-    public java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Event> getEventList() {
-      return event_;
+    public java.lang.String getSourceId() {
+      java.lang.Object ref = sourceId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sourceId_ = s;
+        return s;
+      }
     }
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string source_id = 1[json_name = "source-id"];</code>
      */
-    public java.util.List<? extends com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> 
-        getEventOrBuilderList() {
-      return event_;
+    public com.google.protobuf.ByteString
+        getSourceIdBytes() {
+      java.lang.Object ref = sourceId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sourceId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EVENT_TYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object eventType_;
+    /**
+     * <code>string event_type = 2[json_name = "event-type"];</code>
+     */
+    public java.lang.String getEventType() {
+      java.lang.Object ref = eventType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        eventType_ = s;
+        return s;
+      }
     }
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string event_type = 2[json_name = "event-type"];</code>
      */
-    public int getEventCount() {
-      return event_.size();
+    public com.google.protobuf.ByteString
+        getEventTypeBytes() {
+      java.lang.Object ref = eventType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        eventType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EVENT_TYPE_VERSION_FIELD_NUMBER = 3;
+    private volatile java.lang.Object eventTypeVersion_;
+    /**
+     * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
+     */
+    public java.lang.String getEventTypeVersion() {
+      java.lang.Object ref = eventTypeVersion_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        eventTypeVersion_ = s;
+        return s;
+      }
     }
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
      */
-    public com.pyrite.cartabandonmentservice.CommerceProtos.Event getEvent(int index) {
-      return event_.get(index);
+    public com.google.protobuf.ByteString
+        getEventTypeVersionBytes() {
+      java.lang.Object ref = eventTypeVersion_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        eventTypeVersion_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EVENT_TIME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object eventTime_;
+    /**
+     * <code>string event_time = 4[json_name = "event-type"];</code>
+     */
+    public java.lang.String getEventTime() {
+      java.lang.Object ref = eventTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        eventTime_ = s;
+        return s;
+      }
     }
     /**
-     * <code>repeated .Event event = 1;</code>
+     * <code>string event_time = 4[json_name = "event-type"];</code>
      */
-    public com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getEventOrBuilder(
-        int index) {
-      return event_.get(index);
+    public com.google.protobuf.ByteString
+        getEventTimeBytes() {
+      java.lang.Object ref = eventTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        eventTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DATA_FIELD_NUMBER = 5;
+    private com.pyrite.cartabandonmentservice.CommerceProtos.Event data_;
+    /**
+     * <code>.Event data = 5;</code>
+     */
+    public boolean hasData() {
+      return data_ != null;
+    }
+    /**
+     * <code>.Event data = 5;</code>
+     */
+    public com.pyrite.cartabandonmentservice.CommerceProtos.Event getData() {
+      return data_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.Event.getDefaultInstance() : data_;
+    }
+    /**
+     * <code>.Event data = 5;</code>
+     */
+    public com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getDataOrBuilder() {
+      return getData();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -175,8 +354,20 @@ public final class CommerceProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < event_.size(); i++) {
-        output.writeMessage(1, event_.get(i));
+      if (!getSourceIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, sourceId_);
+      }
+      if (!getEventTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, eventType_);
+      }
+      if (!getEventTypeVersionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, eventTypeVersion_);
+      }
+      if (!getEventTimeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, eventTime_);
+      }
+      if (data_ != null) {
+        output.writeMessage(5, getData());
       }
       unknownFields.writeTo(output);
     }
@@ -187,9 +378,21 @@ public final class CommerceProtos {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < event_.size(); i++) {
+      if (!getSourceIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, sourceId_);
+      }
+      if (!getEventTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, eventType_);
+      }
+      if (!getEventTypeVersionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, eventTypeVersion_);
+      }
+      if (!getEventTimeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, eventTime_);
+      }
+      if (data_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, event_.get(i));
+          .computeMessageSize(5, getData());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -201,14 +404,25 @@ public final class CommerceProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.pyrite.cartabandonmentservice.CommerceProtos.EventList)) {
+      if (!(obj instanceof com.pyrite.cartabandonmentservice.CommerceProtos.Message)) {
         return super.equals(obj);
       }
-      com.pyrite.cartabandonmentservice.CommerceProtos.EventList other = (com.pyrite.cartabandonmentservice.CommerceProtos.EventList) obj;
+      com.pyrite.cartabandonmentservice.CommerceProtos.Message other = (com.pyrite.cartabandonmentservice.CommerceProtos.Message) obj;
 
       boolean result = true;
-      result = result && getEventList()
-          .equals(other.getEventList());
+      result = result && getSourceId()
+          .equals(other.getSourceId());
+      result = result && getEventType()
+          .equals(other.getEventType());
+      result = result && getEventTypeVersion()
+          .equals(other.getEventTypeVersion());
+      result = result && getEventTime()
+          .equals(other.getEventTime());
+      result = result && (hasData() == other.hasData());
+      if (hasData()) {
+        result = result && getData()
+            .equals(other.getData());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -220,78 +434,86 @@ public final class CommerceProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getEventCount() > 0) {
-        hash = (37 * hash) + EVENT_FIELD_NUMBER;
-        hash = (53 * hash) + getEventList().hashCode();
+      hash = (37 * hash) + SOURCE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSourceId().hashCode();
+      hash = (37 * hash) + EVENT_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getEventType().hashCode();
+      hash = (37 * hash) + EVENT_TYPE_VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getEventTypeVersion().hashCode();
+      hash = (37 * hash) + EVENT_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getEventTime().hashCode();
+      if (hasData()) {
+        hash = (37 * hash) + DATA_FIELD_NUMBER;
+        hash = (53 * hash) + getData().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(byte[] data)
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(java.io.InputStream input)
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseDelimitedFrom(java.io.InputStream input)
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseDelimitedFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList parseFrom(
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -304,7 +526,7 @@ public final class CommerceProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.pyrite.cartabandonmentservice.CommerceProtos.EventList prototype) {
+    public static Builder newBuilder(com.pyrite.cartabandonmentservice.CommerceProtos.Message prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -320,26 +542,26 @@ public final class CommerceProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code EventList}
+     * Protobuf type {@code Message}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:EventList)
-        com.pyrite.cartabandonmentservice.CommerceProtos.EventListOrBuilder {
+        // @@protoc_insertion_point(builder_implements:Message)
+        com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventList_descriptor;
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_Message_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventList_fieldAccessorTable
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_Message_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.pyrite.cartabandonmentservice.CommerceProtos.EventList.class, com.pyrite.cartabandonmentservice.CommerceProtos.EventList.Builder.class);
+                com.pyrite.cartabandonmentservice.CommerceProtos.Message.class, com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder.class);
       }
 
-      // Construct using com.pyrite.cartabandonmentservice.CommerceProtos.EventList.newBuilder()
+      // Construct using com.pyrite.cartabandonmentservice.CommerceProtos.Message.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -352,17 +574,24 @@ public final class CommerceProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getEventFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (eventBuilder_ == null) {
-          event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+        sourceId_ = "";
+
+        eventType_ = "";
+
+        eventTypeVersion_ = "";
+
+        eventTime_ = "";
+
+        if (dataBuilder_ == null) {
+          data_ = null;
         } else {
-          eventBuilder_.clear();
+          data_ = null;
+          dataBuilder_ = null;
         }
         return this;
       }
@@ -370,17 +599,17 @@ public final class CommerceProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventList_descriptor;
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_Message_descriptor;
       }
 
       @java.lang.Override
-      public com.pyrite.cartabandonmentservice.CommerceProtos.EventList getDefaultInstanceForType() {
-        return com.pyrite.cartabandonmentservice.CommerceProtos.EventList.getDefaultInstance();
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Message getDefaultInstanceForType() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.Message.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.pyrite.cartabandonmentservice.CommerceProtos.EventList build() {
-        com.pyrite.cartabandonmentservice.CommerceProtos.EventList result = buildPartial();
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Message build() {
+        com.pyrite.cartabandonmentservice.CommerceProtos.Message result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -388,17 +617,16 @@ public final class CommerceProtos {
       }
 
       @java.lang.Override
-      public com.pyrite.cartabandonmentservice.CommerceProtos.EventList buildPartial() {
-        com.pyrite.cartabandonmentservice.CommerceProtos.EventList result = new com.pyrite.cartabandonmentservice.CommerceProtos.EventList(this);
-        int from_bitField0_ = bitField0_;
-        if (eventBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            event_ = java.util.Collections.unmodifiableList(event_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.event_ = event_;
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Message buildPartial() {
+        com.pyrite.cartabandonmentservice.CommerceProtos.Message result = new com.pyrite.cartabandonmentservice.CommerceProtos.Message(this);
+        result.sourceId_ = sourceId_;
+        result.eventType_ = eventType_;
+        result.eventTypeVersion_ = eventTypeVersion_;
+        result.eventTime_ = eventTime_;
+        if (dataBuilder_ == null) {
+          result.data_ = data_;
         } else {
-          result.event_ = eventBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -438,39 +666,966 @@ public final class CommerceProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.pyrite.cartabandonmentservice.CommerceProtos.EventList) {
-          return mergeFrom((com.pyrite.cartabandonmentservice.CommerceProtos.EventList)other);
+        if (other instanceof com.pyrite.cartabandonmentservice.CommerceProtos.Message) {
+          return mergeFrom((com.pyrite.cartabandonmentservice.CommerceProtos.Message)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.pyrite.cartabandonmentservice.CommerceProtos.EventList other) {
-        if (other == com.pyrite.cartabandonmentservice.CommerceProtos.EventList.getDefaultInstance()) return this;
-        if (eventBuilder_ == null) {
-          if (!other.event_.isEmpty()) {
-            if (event_.isEmpty()) {
-              event_ = other.event_;
+      public Builder mergeFrom(com.pyrite.cartabandonmentservice.CommerceProtos.Message other) {
+        if (other == com.pyrite.cartabandonmentservice.CommerceProtos.Message.getDefaultInstance()) return this;
+        if (!other.getSourceId().isEmpty()) {
+          sourceId_ = other.sourceId_;
+          onChanged();
+        }
+        if (!other.getEventType().isEmpty()) {
+          eventType_ = other.eventType_;
+          onChanged();
+        }
+        if (!other.getEventTypeVersion().isEmpty()) {
+          eventTypeVersion_ = other.eventTypeVersion_;
+          onChanged();
+        }
+        if (!other.getEventTime().isEmpty()) {
+          eventTime_ = other.eventTime_;
+          onChanged();
+        }
+        if (other.hasData()) {
+          mergeData(other.getData());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.pyrite.cartabandonmentservice.CommerceProtos.Message parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.pyrite.cartabandonmentservice.CommerceProtos.Message) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object sourceId_ = "";
+      /**
+       * <code>string source_id = 1[json_name = "source-id"];</code>
+       */
+      public java.lang.String getSourceId() {
+        java.lang.Object ref = sourceId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sourceId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string source_id = 1[json_name = "source-id"];</code>
+       */
+      public com.google.protobuf.ByteString
+          getSourceIdBytes() {
+        java.lang.Object ref = sourceId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sourceId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string source_id = 1[json_name = "source-id"];</code>
+       */
+      public Builder setSourceId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sourceId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string source_id = 1[json_name = "source-id"];</code>
+       */
+      public Builder clearSourceId() {
+        
+        sourceId_ = getDefaultInstance().getSourceId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string source_id = 1[json_name = "source-id"];</code>
+       */
+      public Builder setSourceIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sourceId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object eventType_ = "";
+      /**
+       * <code>string event_type = 2[json_name = "event-type"];</code>
+       */
+      public java.lang.String getEventType() {
+        java.lang.Object ref = eventType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          eventType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string event_type = 2[json_name = "event-type"];</code>
+       */
+      public com.google.protobuf.ByteString
+          getEventTypeBytes() {
+        java.lang.Object ref = eventType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          eventType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string event_type = 2[json_name = "event-type"];</code>
+       */
+      public Builder setEventType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        eventType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_type = 2[json_name = "event-type"];</code>
+       */
+      public Builder clearEventType() {
+        
+        eventType_ = getDefaultInstance().getEventType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_type = 2[json_name = "event-type"];</code>
+       */
+      public Builder setEventTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        eventType_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object eventTypeVersion_ = "";
+      /**
+       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
+       */
+      public java.lang.String getEventTypeVersion() {
+        java.lang.Object ref = eventTypeVersion_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          eventTypeVersion_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
+       */
+      public com.google.protobuf.ByteString
+          getEventTypeVersionBytes() {
+        java.lang.Object ref = eventTypeVersion_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          eventTypeVersion_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
+       */
+      public Builder setEventTypeVersion(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        eventTypeVersion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
+       */
+      public Builder clearEventTypeVersion() {
+        
+        eventTypeVersion_ = getDefaultInstance().getEventTypeVersion();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
+       */
+      public Builder setEventTypeVersionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        eventTypeVersion_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object eventTime_ = "";
+      /**
+       * <code>string event_time = 4[json_name = "event-type"];</code>
+       */
+      public java.lang.String getEventTime() {
+        java.lang.Object ref = eventTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          eventTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string event_time = 4[json_name = "event-type"];</code>
+       */
+      public com.google.protobuf.ByteString
+          getEventTimeBytes() {
+        java.lang.Object ref = eventTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          eventTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string event_time = 4[json_name = "event-type"];</code>
+       */
+      public Builder setEventTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        eventTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_time = 4[json_name = "event-type"];</code>
+       */
+      public Builder clearEventTime() {
+        
+        eventTime_ = getDefaultInstance().getEventTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_time = 4[json_name = "event-type"];</code>
+       */
+      public Builder setEventTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        eventTime_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.pyrite.cartabandonmentservice.CommerceProtos.Event data_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> dataBuilder_;
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      public boolean hasData() {
+        return dataBuilder_ != null || data_ != null;
+      }
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Event getData() {
+        if (dataBuilder_ == null) {
+          return data_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.Event.getDefaultInstance() : data_;
+        } else {
+          return dataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      public Builder setData(com.pyrite.cartabandonmentservice.CommerceProtos.Event value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          data_ = value;
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      public Builder setData(
+          com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          data_ = builderForValue.build();
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      public Builder mergeData(com.pyrite.cartabandonmentservice.CommerceProtos.Event value) {
+        if (dataBuilder_ == null) {
+          if (data_ != null) {
+            data_ =
+              com.pyrite.cartabandonmentservice.CommerceProtos.Event.newBuilder(data_).mergeFrom(value).buildPartial();
+          } else {
+            data_ = value;
+          }
+          onChanged();
+        } else {
+          dataBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = null;
+          onChanged();
+        } else {
+          data_ = null;
+          dataBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder getDataBuilder() {
+        
+        onChanged();
+        return getDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getDataOrBuilder() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilder();
+        } else {
+          return data_ == null ?
+              com.pyrite.cartabandonmentservice.CommerceProtos.Event.getDefaultInstance() : data_;
+        }
+      }
+      /**
+       * <code>.Event data = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder>(
+                  getData(),
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        return dataBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:Message)
+    }
+
+    // @@protoc_insertion_point(class_scope:Message)
+    private static final com.pyrite.cartabandonmentservice.CommerceProtos.Message DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.pyrite.cartabandonmentservice.CommerceProtos.Message();
+    }
+
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.Message getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Message>
+        PARSER = new com.google.protobuf.AbstractParser<Message>() {
+      @java.lang.Override
+      public Message parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Message(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Message> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Message> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.pyrite.cartabandonmentservice.CommerceProtos.Message getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MessageListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MessageList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Message> 
+        getMessageList();
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    com.pyrite.cartabandonmentservice.CommerceProtos.Message getMessage(int index);
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    int getMessageCount();
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    java.util.List<? extends com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder> 
+        getMessageOrBuilderList();
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder getMessageOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code MessageList}
+   */
+  public  static final class MessageList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MessageList)
+      MessageListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use MessageList.newBuilder() to construct.
+    private MessageList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MessageList() {
+      message_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MessageList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                message_ = new java.util.ArrayList<com.pyrite.cartabandonmentservice.CommerceProtos.Message>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              message_.add(
+                  input.readMessage(com.pyrite.cartabandonmentservice.CommerceProtos.Message.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          message_ = java.util.Collections.unmodifiableList(message_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_MessageList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_MessageList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.pyrite.cartabandonmentservice.CommerceProtos.MessageList.class, com.pyrite.cartabandonmentservice.CommerceProtos.MessageList.Builder.class);
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 1;
+    private java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Message> message_;
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    public java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Message> getMessageList() {
+      return message_;
+    }
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    public java.util.List<? extends com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder> 
+        getMessageOrBuilderList() {
+      return message_;
+    }
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    public int getMessageCount() {
+      return message_.size();
+    }
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    public com.pyrite.cartabandonmentservice.CommerceProtos.Message getMessage(int index) {
+      return message_.get(index);
+    }
+    /**
+     * <code>repeated .Message message = 1;</code>
+     */
+    public com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder getMessageOrBuilder(
+        int index) {
+      return message_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < message_.size(); i++) {
+        output.writeMessage(1, message_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < message_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, message_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.pyrite.cartabandonmentservice.CommerceProtos.MessageList)) {
+        return super.equals(obj);
+      }
+      com.pyrite.cartabandonmentservice.CommerceProtos.MessageList other = (com.pyrite.cartabandonmentservice.CommerceProtos.MessageList) obj;
+
+      boolean result = true;
+      result = result && getMessageList()
+          .equals(other.getMessageList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getMessageCount() > 0) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.pyrite.cartabandonmentservice.CommerceProtos.MessageList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MessageList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MessageList)
+        com.pyrite.cartabandonmentservice.CommerceProtos.MessageListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_MessageList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_MessageList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.pyrite.cartabandonmentservice.CommerceProtos.MessageList.class, com.pyrite.cartabandonmentservice.CommerceProtos.MessageList.Builder.class);
+      }
+
+      // Construct using com.pyrite.cartabandonmentservice.CommerceProtos.MessageList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMessageFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          messageBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_MessageList_descriptor;
+      }
+
+      @java.lang.Override
+      public com.pyrite.cartabandonmentservice.CommerceProtos.MessageList getDefaultInstanceForType() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.MessageList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.pyrite.cartabandonmentservice.CommerceProtos.MessageList build() {
+        com.pyrite.cartabandonmentservice.CommerceProtos.MessageList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.pyrite.cartabandonmentservice.CommerceProtos.MessageList buildPartial() {
+        com.pyrite.cartabandonmentservice.CommerceProtos.MessageList result = new com.pyrite.cartabandonmentservice.CommerceProtos.MessageList(this);
+        int from_bitField0_ = bitField0_;
+        if (messageBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            message_ = java.util.Collections.unmodifiableList(message_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.message_ = message_;
+        } else {
+          result.message_ = messageBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.pyrite.cartabandonmentservice.CommerceProtos.MessageList) {
+          return mergeFrom((com.pyrite.cartabandonmentservice.CommerceProtos.MessageList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.pyrite.cartabandonmentservice.CommerceProtos.MessageList other) {
+        if (other == com.pyrite.cartabandonmentservice.CommerceProtos.MessageList.getDefaultInstance()) return this;
+        if (messageBuilder_ == null) {
+          if (!other.message_.isEmpty()) {
+            if (message_.isEmpty()) {
+              message_ = other.message_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureEventIsMutable();
-              event_.addAll(other.event_);
+              ensureMessageIsMutable();
+              message_.addAll(other.message_);
             }
             onChanged();
           }
         } else {
-          if (!other.event_.isEmpty()) {
-            if (eventBuilder_.isEmpty()) {
-              eventBuilder_.dispose();
-              eventBuilder_ = null;
-              event_ = other.event_;
+          if (!other.message_.isEmpty()) {
+            if (messageBuilder_.isEmpty()) {
+              messageBuilder_.dispose();
+              messageBuilder_ = null;
+              message_ = other.message_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              eventBuilder_ = 
+              messageBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getEventFieldBuilder() : null;
+                   getMessageFieldBuilder() : null;
             } else {
-              eventBuilder_.addAllMessages(other.event_);
+              messageBuilder_.addAllMessages(other.message_);
             }
           }
         }
@@ -489,11 +1644,11 @@ public final class CommerceProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.pyrite.cartabandonmentservice.CommerceProtos.EventList parsedMessage = null;
+        com.pyrite.cartabandonmentservice.CommerceProtos.MessageList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.pyrite.cartabandonmentservice.CommerceProtos.EventList) e.getUnfinishedMessage();
+          parsedMessage = (com.pyrite.cartabandonmentservice.CommerceProtos.MessageList) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -504,244 +1659,244 @@ public final class CommerceProtos {
       }
       private int bitField0_;
 
-      private java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Event> event_ =
+      private java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Message> message_ =
         java.util.Collections.emptyList();
-      private void ensureEventIsMutable() {
+      private void ensureMessageIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          event_ = new java.util.ArrayList<com.pyrite.cartabandonmentservice.CommerceProtos.Event>(event_);
+          message_ = new java.util.ArrayList<com.pyrite.cartabandonmentservice.CommerceProtos.Message>(message_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> eventBuilder_;
+          com.pyrite.cartabandonmentservice.CommerceProtos.Message, com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder> messageBuilder_;
 
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Event> getEventList() {
-        if (eventBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(event_);
+      public java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Message> getMessageList() {
+        if (messageBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(message_);
         } else {
-          return eventBuilder_.getMessageList();
+          return messageBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public int getEventCount() {
-        if (eventBuilder_ == null) {
-          return event_.size();
+      public int getMessageCount() {
+        if (messageBuilder_ == null) {
+          return message_.size();
         } else {
-          return eventBuilder_.getCount();
+          return messageBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public com.pyrite.cartabandonmentservice.CommerceProtos.Event getEvent(int index) {
-        if (eventBuilder_ == null) {
-          return event_.get(index);
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Message getMessage(int index) {
+        if (messageBuilder_ == null) {
+          return message_.get(index);
         } else {
-          return eventBuilder_.getMessage(index);
+          return messageBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder setEvent(
-          int index, com.pyrite.cartabandonmentservice.CommerceProtos.Event value) {
-        if (eventBuilder_ == null) {
+      public Builder setMessage(
+          int index, com.pyrite.cartabandonmentservice.CommerceProtos.Message value) {
+        if (messageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEventIsMutable();
-          event_.set(index, value);
+          ensureMessageIsMutable();
+          message_.set(index, value);
           onChanged();
         } else {
-          eventBuilder_.setMessage(index, value);
+          messageBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder setEvent(
-          int index, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder builderForValue) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          event_.set(index, builderForValue.build());
+      public Builder setMessage(
+          int index, com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.set(index, builderForValue.build());
           onChanged();
         } else {
-          eventBuilder_.setMessage(index, builderForValue.build());
+          messageBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder addEvent(com.pyrite.cartabandonmentservice.CommerceProtos.Event value) {
-        if (eventBuilder_ == null) {
+      public Builder addMessage(com.pyrite.cartabandonmentservice.CommerceProtos.Message value) {
+        if (messageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEventIsMutable();
-          event_.add(value);
+          ensureMessageIsMutable();
+          message_.add(value);
           onChanged();
         } else {
-          eventBuilder_.addMessage(value);
+          messageBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder addEvent(
-          int index, com.pyrite.cartabandonmentservice.CommerceProtos.Event value) {
-        if (eventBuilder_ == null) {
+      public Builder addMessage(
+          int index, com.pyrite.cartabandonmentservice.CommerceProtos.Message value) {
+        if (messageBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEventIsMutable();
-          event_.add(index, value);
+          ensureMessageIsMutable();
+          message_.add(index, value);
           onChanged();
         } else {
-          eventBuilder_.addMessage(index, value);
+          messageBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder addEvent(
-          com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder builderForValue) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          event_.add(builderForValue.build());
+      public Builder addMessage(
+          com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(builderForValue.build());
           onChanged();
         } else {
-          eventBuilder_.addMessage(builderForValue.build());
+          messageBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder addEvent(
-          int index, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder builderForValue) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          event_.add(index, builderForValue.build());
+      public Builder addMessage(
+          int index, com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder builderForValue) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.add(index, builderForValue.build());
           onChanged();
         } else {
-          eventBuilder_.addMessage(index, builderForValue.build());
+          messageBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder addAllEvent(
-          java.lang.Iterable<? extends com.pyrite.cartabandonmentservice.CommerceProtos.Event> values) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
+      public Builder addAllMessage(
+          java.lang.Iterable<? extends com.pyrite.cartabandonmentservice.CommerceProtos.Message> values) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, event_);
+              values, message_);
           onChanged();
         } else {
-          eventBuilder_.addAllMessages(values);
+          messageBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder clearEvent() {
-        if (eventBuilder_ == null) {
-          event_ = java.util.Collections.emptyList();
+      public Builder clearMessage() {
+        if (messageBuilder_ == null) {
+          message_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          eventBuilder_.clear();
+          messageBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public Builder removeEvent(int index) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          event_.remove(index);
+      public Builder removeMessage(int index) {
+        if (messageBuilder_ == null) {
+          ensureMessageIsMutable();
+          message_.remove(index);
           onChanged();
         } else {
-          eventBuilder_.remove(index);
+          messageBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder getEventBuilder(
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder getMessageBuilder(
           int index) {
-        return getEventFieldBuilder().getBuilder(index);
+        return getMessageFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getEventOrBuilder(
+      public com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder getMessageOrBuilder(
           int index) {
-        if (eventBuilder_ == null) {
-          return event_.get(index);  } else {
-          return eventBuilder_.getMessageOrBuilder(index);
+        if (messageBuilder_ == null) {
+          return message_.get(index);  } else {
+          return messageBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public java.util.List<? extends com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> 
-           getEventOrBuilderList() {
-        if (eventBuilder_ != null) {
-          return eventBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder> 
+           getMessageOrBuilderList() {
+        if (messageBuilder_ != null) {
+          return messageBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(event_);
+          return java.util.Collections.unmodifiableList(message_);
         }
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder addEventBuilder() {
-        return getEventFieldBuilder().addBuilder(
-            com.pyrite.cartabandonmentservice.CommerceProtos.Event.getDefaultInstance());
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder addMessageBuilder() {
+        return getMessageFieldBuilder().addBuilder(
+            com.pyrite.cartabandonmentservice.CommerceProtos.Message.getDefaultInstance());
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder addEventBuilder(
+      public com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder addMessageBuilder(
           int index) {
-        return getEventFieldBuilder().addBuilder(
-            index, com.pyrite.cartabandonmentservice.CommerceProtos.Event.getDefaultInstance());
+        return getMessageFieldBuilder().addBuilder(
+            index, com.pyrite.cartabandonmentservice.CommerceProtos.Message.getDefaultInstance());
       }
       /**
-       * <code>repeated .Event event = 1;</code>
+       * <code>repeated .Message message = 1;</code>
        */
-      public java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder> 
-           getEventBuilderList() {
-        return getEventFieldBuilder().getBuilderList();
+      public java.util.List<com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder> 
+           getMessageBuilderList() {
+        return getMessageFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> 
-          getEventFieldBuilder() {
-        if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder>(
-                  event_,
+          com.pyrite.cartabandonmentservice.CommerceProtos.Message, com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder> 
+          getMessageFieldBuilder() {
+        if (messageBuilder_ == null) {
+          messageBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.pyrite.cartabandonmentservice.CommerceProtos.Message, com.pyrite.cartabandonmentservice.CommerceProtos.Message.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.MessageOrBuilder>(
+                  message_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          event_ = null;
+          message_ = null;
         }
-        return eventBuilder_;
+        return messageBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -756,41 +1911,41 @@ public final class CommerceProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:EventList)
+      // @@protoc_insertion_point(builder_scope:MessageList)
     }
 
-    // @@protoc_insertion_point(class_scope:EventList)
-    private static final com.pyrite.cartabandonmentservice.CommerceProtos.EventList DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:MessageList)
+    private static final com.pyrite.cartabandonmentservice.CommerceProtos.MessageList DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.pyrite.cartabandonmentservice.CommerceProtos.EventList();
+      DEFAULT_INSTANCE = new com.pyrite.cartabandonmentservice.CommerceProtos.MessageList();
     }
 
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventList getDefaultInstance() {
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.MessageList getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<EventList>
-        PARSER = new com.google.protobuf.AbstractParser<EventList>() {
+    private static final com.google.protobuf.Parser<MessageList>
+        PARSER = new com.google.protobuf.AbstractParser<MessageList>() {
       @java.lang.Override
-      public EventList parsePartialFrom(
+      public MessageList parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EventList(input, extensionRegistry);
+        return new MessageList(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<EventList> parser() {
+    public static com.google.protobuf.Parser<MessageList> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<EventList> getParserForType() {
+    public com.google.protobuf.Parser<MessageList> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.pyrite.cartabandonmentservice.CommerceProtos.EventList getDefaultInstanceForType() {
+    public com.pyrite.cartabandonmentservice.CommerceProtos.MessageList getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -810,26 +1965,14 @@ public final class CommerceProtos {
     com.pyrite.cartabandonmentservice.CommerceProtos.Event.Type getType();
 
     /**
-     * <pre>
-     * CartAbandoned cart_abandoned = 3;
-     * </pre>
-     *
      * <code>.CustomerCreated customer_created = 4;</code>
      */
     boolean hasCustomerCreated();
     /**
-     * <pre>
-     * CartAbandoned cart_abandoned = 3;
-     * </pre>
-     *
      * <code>.CustomerCreated customer_created = 4;</code>
      */
     com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated getCustomerCreated();
     /**
-     * <pre>
-     * CartAbandoned cart_abandoned = 3;
-     * </pre>
-     *
      * <code>.CustomerCreated customer_created = 4;</code>
      */
     com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreatedOrBuilder getCustomerCreatedOrBuilder();
@@ -1043,10 +2186,6 @@ public final class CommerceProtos {
        */
       UNKNOWN(0),
       /**
-       * <pre>
-       * CART_ABANDONED = 1;
-       * </pre>
-       *
        * <code>CUSTOMER_CREATED = 2;</code>
        */
       CUSTOMER_CREATED(2),
@@ -1082,10 +2221,6 @@ public final class CommerceProtos {
        */
       public static final int UNKNOWN_VALUE = 0;
       /**
-       * <pre>
-       * CART_ABANDONED = 1;
-       * </pre>
-       *
        * <code>CUSTOMER_CREATED = 2;</code>
        */
       public static final int CUSTOMER_CREATED_VALUE = 2;
@@ -1213,30 +2348,18 @@ public final class CommerceProtos {
     public static final int CUSTOMER_CREATED_FIELD_NUMBER = 4;
     private com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated customerCreated_;
     /**
-     * <pre>
-     * CartAbandoned cart_abandoned = 3;
-     * </pre>
-     *
      * <code>.CustomerCreated customer_created = 4;</code>
      */
     public boolean hasCustomerCreated() {
       return customerCreated_ != null;
     }
     /**
-     * <pre>
-     * CartAbandoned cart_abandoned = 3;
-     * </pre>
-     *
      * <code>.CustomerCreated customer_created = 4;</code>
      */
     public com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated getCustomerCreated() {
       return customerCreated_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated.getDefaultInstance() : customerCreated_;
     }
     /**
-     * <pre>
-     * CartAbandoned cart_abandoned = 3;
-     * </pre>
-     *
      * <code>.CustomerCreated customer_created = 4;</code>
      */
     public com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreatedOrBuilder getCustomerCreatedOrBuilder() {
@@ -1828,20 +2951,12 @@ public final class CommerceProtos {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated, com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreatedOrBuilder> customerCreatedBuilder_;
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       public boolean hasCustomerCreated() {
         return customerCreatedBuilder_ != null || customerCreated_ != null;
       }
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       public com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated getCustomerCreated() {
@@ -1852,10 +2967,6 @@ public final class CommerceProtos {
         }
       }
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       public Builder setCustomerCreated(com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated value) {
@@ -1872,10 +2983,6 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       public Builder setCustomerCreated(
@@ -1890,10 +2997,6 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       public Builder mergeCustomerCreated(com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated value) {
@@ -1912,10 +3015,6 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       public Builder clearCustomerCreated() {
@@ -1930,10 +3029,6 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       public com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated.Builder getCustomerCreatedBuilder() {
@@ -1942,10 +3037,6 @@ public final class CommerceProtos {
         return getCustomerCreatedFieldBuilder().getBuilder();
       }
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       public com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreatedOrBuilder getCustomerCreatedOrBuilder() {
@@ -1957,10 +3048,6 @@ public final class CommerceProtos {
         }
       }
       /**
-       * <pre>
-       * CartAbandoned cart_abandoned = 3;
-       * </pre>
-       *
        * <code>.CustomerCreated customer_created = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -2502,11 +3589,11 @@ public final class CommerceProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string customerId = 1;</code>
+     * <code>string customer_id = 1;</code>
      */
     java.lang.String getCustomerId();
     /**
-     * <code>string customerId = 1;</code>
+     * <code>string customer_id = 1;</code>
      */
     com.google.protobuf.ByteString
         getCustomerIdBytes();
@@ -2648,10 +3735,10 @@ public final class CommerceProtos {
               com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated.class, com.pyrite.cartabandonmentservice.CommerceProtos.CustomerCreated.Builder.class);
     }
 
-    public static final int CUSTOMERID_FIELD_NUMBER = 1;
+    public static final int CUSTOMER_ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object customerId_;
     /**
-     * <code>string customerId = 1;</code>
+     * <code>string customer_id = 1;</code>
      */
     public java.lang.String getCustomerId() {
       java.lang.Object ref = customerId_;
@@ -2666,7 +3753,7 @@ public final class CommerceProtos {
       }
     }
     /**
-     * <code>string customerId = 1;</code>
+     * <code>string customer_id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getCustomerIdBytes() {
@@ -2874,7 +3961,7 @@ public final class CommerceProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CUSTOMERID_FIELD_NUMBER;
+      hash = (37 * hash) + CUSTOMER_ID_FIELD_NUMBER;
       hash = (53 * hash) + getCustomerId().hashCode();
       hash = (37 * hash) + CUSTOMER_UID_FIELD_NUMBER;
       hash = (53 * hash) + getCustomerUid().hashCode();
@@ -3148,7 +4235,7 @@ public final class CommerceProtos {
 
       private java.lang.Object customerId_ = "";
       /**
-       * <code>string customerId = 1;</code>
+       * <code>string customer_id = 1;</code>
        */
       public java.lang.String getCustomerId() {
         java.lang.Object ref = customerId_;
@@ -3163,7 +4250,7 @@ public final class CommerceProtos {
         }
       }
       /**
-       * <code>string customerId = 1;</code>
+       * <code>string customer_id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getCustomerIdBytes() {
@@ -3179,7 +4266,7 @@ public final class CommerceProtos {
         }
       }
       /**
-       * <code>string customerId = 1;</code>
+       * <code>string customer_id = 1;</code>
        */
       public Builder setCustomerId(
           java.lang.String value) {
@@ -3192,7 +4279,7 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <code>string customerId = 1;</code>
+       * <code>string customer_id = 1;</code>
        */
       public Builder clearCustomerId() {
         
@@ -3201,7 +4288,7 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <code>string customerId = 1;</code>
+       * <code>string customer_id = 1;</code>
        */
       public Builder setCustomerIdBytes(
           com.google.protobuf.ByteString value) {
@@ -3499,24 +4586,24 @@ public final class CommerceProtos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string siteId = 1;</code>
+     * <code>string site_id = 1;</code>
      */
     java.lang.String getSiteId();
     /**
-     * <code>string siteId = 1;</code>
+     * <code>string site_id = 1;</code>
      */
     com.google.protobuf.ByteString
         getSiteIdBytes();
 
     /**
-     * <code>string siteName = 2;</code>
+     * <code>string description = 2;</code>
      */
-    java.lang.String getSiteName();
+    java.lang.String getDescription();
     /**
-     * <code>string siteName = 2;</code>
+     * <code>string description = 2;</code>
      */
     com.google.protobuf.ByteString
-        getSiteNameBytes();
+        getDescriptionBytes();
 
     /**
      * <pre>
@@ -3550,7 +4637,7 @@ public final class CommerceProtos {
     }
     private SiteCreated() {
       siteId_ = "";
-      siteName_ = "";
+      description_ = "";
       email_ = "";
     }
 
@@ -3587,7 +4674,7 @@ public final class CommerceProtos {
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              siteName_ = s;
+              description_ = s;
               break;
             }
             case 34: {
@@ -3628,10 +4715,10 @@ public final class CommerceProtos {
               com.pyrite.cartabandonmentservice.CommerceProtos.SiteCreated.class, com.pyrite.cartabandonmentservice.CommerceProtos.SiteCreated.Builder.class);
     }
 
-    public static final int SITEID_FIELD_NUMBER = 1;
+    public static final int SITE_ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object siteId_;
     /**
-     * <code>string siteId = 1;</code>
+     * <code>string site_id = 1;</code>
      */
     public java.lang.String getSiteId() {
       java.lang.Object ref = siteId_;
@@ -3646,7 +4733,7 @@ public final class CommerceProtos {
       }
     }
     /**
-     * <code>string siteId = 1;</code>
+     * <code>string site_id = 1;</code>
      */
     public com.google.protobuf.ByteString
         getSiteIdBytes() {
@@ -3662,34 +4749,34 @@ public final class CommerceProtos {
       }
     }
 
-    public static final int SITENAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object siteName_;
+    public static final int DESCRIPTION_FIELD_NUMBER = 2;
+    private volatile java.lang.Object description_;
     /**
-     * <code>string siteName = 2;</code>
+     * <code>string description = 2;</code>
      */
-    public java.lang.String getSiteName() {
-      java.lang.Object ref = siteName_;
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        siteName_ = s;
+        description_ = s;
         return s;
       }
     }
     /**
-     * <code>string siteName = 2;</code>
+     * <code>string description = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getSiteNameBytes() {
-      java.lang.Object ref = siteName_;
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        siteName_ = b;
+        description_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -3755,8 +4842,8 @@ public final class CommerceProtos {
       if (!getSiteIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, siteId_);
       }
-      if (!getSiteNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, siteName_);
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
       }
       if (!getEmailBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, email_);
@@ -3773,8 +4860,8 @@ public final class CommerceProtos {
       if (!getSiteIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, siteId_);
       }
-      if (!getSiteNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, siteName_);
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
       }
       if (!getEmailBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, email_);
@@ -3797,8 +4884,8 @@ public final class CommerceProtos {
       boolean result = true;
       result = result && getSiteId()
           .equals(other.getSiteId());
-      result = result && getSiteName()
-          .equals(other.getSiteName());
+      result = result && getDescription()
+          .equals(other.getDescription());
       result = result && getEmail()
           .equals(other.getEmail());
       result = result && unknownFields.equals(other.unknownFields);
@@ -3812,10 +4899,10 @@ public final class CommerceProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SITEID_FIELD_NUMBER;
+      hash = (37 * hash) + SITE_ID_FIELD_NUMBER;
       hash = (53 * hash) + getSiteId().hashCode();
-      hash = (37 * hash) + SITENAME_FIELD_NUMBER;
-      hash = (53 * hash) + getSiteName().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
       hash = (37 * hash) + EMAIL_FIELD_NUMBER;
       hash = (53 * hash) + getEmail().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -3953,7 +5040,7 @@ public final class CommerceProtos {
         super.clear();
         siteId_ = "";
 
-        siteName_ = "";
+        description_ = "";
 
         email_ = "";
 
@@ -3984,7 +5071,7 @@ public final class CommerceProtos {
       public com.pyrite.cartabandonmentservice.CommerceProtos.SiteCreated buildPartial() {
         com.pyrite.cartabandonmentservice.CommerceProtos.SiteCreated result = new com.pyrite.cartabandonmentservice.CommerceProtos.SiteCreated(this);
         result.siteId_ = siteId_;
-        result.siteName_ = siteName_;
+        result.description_ = description_;
         result.email_ = email_;
         onBuilt();
         return result;
@@ -4038,8 +5125,8 @@ public final class CommerceProtos {
           siteId_ = other.siteId_;
           onChanged();
         }
-        if (!other.getSiteName().isEmpty()) {
-          siteName_ = other.siteName_;
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
           onChanged();
         }
         if (!other.getEmail().isEmpty()) {
@@ -4077,7 +5164,7 @@ public final class CommerceProtos {
 
       private java.lang.Object siteId_ = "";
       /**
-       * <code>string siteId = 1;</code>
+       * <code>string site_id = 1;</code>
        */
       public java.lang.String getSiteId() {
         java.lang.Object ref = siteId_;
@@ -4092,7 +5179,7 @@ public final class CommerceProtos {
         }
       }
       /**
-       * <code>string siteId = 1;</code>
+       * <code>string site_id = 1;</code>
        */
       public com.google.protobuf.ByteString
           getSiteIdBytes() {
@@ -4108,7 +5195,7 @@ public final class CommerceProtos {
         }
       }
       /**
-       * <code>string siteId = 1;</code>
+       * <code>string site_id = 1;</code>
        */
       public Builder setSiteId(
           java.lang.String value) {
@@ -4121,7 +5208,7 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <code>string siteId = 1;</code>
+       * <code>string site_id = 1;</code>
        */
       public Builder clearSiteId() {
         
@@ -4130,7 +5217,7 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <code>string siteId = 1;</code>
+       * <code>string site_id = 1;</code>
        */
       public Builder setSiteIdBytes(
           com.google.protobuf.ByteString value) {
@@ -4144,71 +5231,71 @@ public final class CommerceProtos {
         return this;
       }
 
-      private java.lang.Object siteName_ = "";
+      private java.lang.Object description_ = "";
       /**
-       * <code>string siteName = 2;</code>
+       * <code>string description = 2;</code>
        */
-      public java.lang.String getSiteName() {
-        java.lang.Object ref = siteName_;
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          siteName_ = s;
+          description_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string siteName = 2;</code>
+       * <code>string description = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getSiteNameBytes() {
-        java.lang.Object ref = siteName_;
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          siteName_ = b;
+          description_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string siteName = 2;</code>
+       * <code>string description = 2;</code>
        */
-      public Builder setSiteName(
+      public Builder setDescription(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        siteName_ = value;
+        description_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string siteName = 2;</code>
+       * <code>string description = 2;</code>
        */
-      public Builder clearSiteName() {
+      public Builder clearDescription() {
         
-        siteName_ = getDefaultInstance().getSiteName();
+        description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
       }
       /**
-       * <code>string siteName = 2;</code>
+       * <code>string description = 2;</code>
        */
-      public Builder setSiteNameBytes(
+      public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        siteName_ = value;
+        description_ = value;
         onChanged();
         return this;
       }
@@ -6692,6 +7779,36 @@ public final class CommerceProtos {
   public interface CartSuccessfulCheckoutOrBuilder extends
       // @@protoc_insertion_point(interface_extends:CartSuccessfulCheckout)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string base_site_id = 1;</code>
+     */
+    java.lang.String getBaseSiteId();
+    /**
+     * <code>string base_site_id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getBaseSiteIdBytes();
+
+    /**
+     * <code>string cart_id = 2;</code>
+     */
+    java.lang.String getCartId();
+    /**
+     * <code>string cart_id = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getCartIdBytes();
+
+    /**
+     * <code>string user_id = 3;</code>
+     */
+    java.lang.String getUserId();
+    /**
+     * <code>string user_id = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserIdBytes();
   }
   /**
    * Protobuf type {@code CartSuccessfulCheckout}
@@ -6706,6 +7823,9 @@ public final class CommerceProtos {
       super(builder);
     }
     private CartSuccessfulCheckout() {
+      baseSiteId_ = "";
+      cartId_ = "";
+      userId_ = "";
     }
 
     @java.lang.Override
@@ -6721,6 +7841,7 @@ public final class CommerceProtos {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -6731,6 +7852,24 @@ public final class CommerceProtos {
             case 0:
               done = true;
               break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              baseSiteId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              cartId_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userId_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -6763,6 +7902,108 @@ public final class CommerceProtos {
               com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.class, com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.Builder.class);
     }
 
+    public static final int BASE_SITE_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object baseSiteId_;
+    /**
+     * <code>string base_site_id = 1;</code>
+     */
+    public java.lang.String getBaseSiteId() {
+      java.lang.Object ref = baseSiteId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        baseSiteId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string base_site_id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getBaseSiteIdBytes() {
+      java.lang.Object ref = baseSiteId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        baseSiteId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CART_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object cartId_;
+    /**
+     * <code>string cart_id = 2;</code>
+     */
+    public java.lang.String getCartId() {
+      java.lang.Object ref = cartId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        cartId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string cart_id = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCartIdBytes() {
+      java.lang.Object ref = cartId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cartId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USER_ID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object userId_;
+    /**
+     * <code>string user_id = 3;</code>
+     */
+    public java.lang.String getUserId() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string user_id = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6777,6 +8018,15 @@ public final class CommerceProtos {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!getBaseSiteIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, baseSiteId_);
+      }
+      if (!getCartIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, cartId_);
+      }
+      if (!getUserIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, userId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -6786,6 +8036,15 @@ public final class CommerceProtos {
       if (size != -1) return size;
 
       size = 0;
+      if (!getBaseSiteIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, baseSiteId_);
+      }
+      if (!getCartIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, cartId_);
+      }
+      if (!getUserIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, userId_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -6802,6 +8061,12 @@ public final class CommerceProtos {
       com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout other = (com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout) obj;
 
       boolean result = true;
+      result = result && getBaseSiteId()
+          .equals(other.getBaseSiteId());
+      result = result && getCartId()
+          .equals(other.getCartId());
+      result = result && getUserId()
+          .equals(other.getUserId());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -6813,6 +8078,12 @@ public final class CommerceProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + BASE_SITE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getBaseSiteId().hashCode();
+      hash = (37 * hash) + CART_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getCartId().hashCode();
+      hash = (37 * hash) + USER_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6946,6 +8217,12 @@ public final class CommerceProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        baseSiteId_ = "";
+
+        cartId_ = "";
+
+        userId_ = "";
+
         return this;
       }
 
@@ -6972,6 +8249,9 @@ public final class CommerceProtos {
       @java.lang.Override
       public com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout buildPartial() {
         com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout result = new com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout(this);
+        result.baseSiteId_ = baseSiteId_;
+        result.cartId_ = cartId_;
+        result.userId_ = userId_;
         onBuilt();
         return result;
       }
@@ -7020,6 +8300,18 @@ public final class CommerceProtos {
 
       public Builder mergeFrom(com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout other) {
         if (other == com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckout.getDefaultInstance()) return this;
+        if (!other.getBaseSiteId().isEmpty()) {
+          baseSiteId_ = other.baseSiteId_;
+          onChanged();
+        }
+        if (!other.getCartId().isEmpty()) {
+          cartId_ = other.cartId_;
+          onChanged();
+        }
+        if (!other.getUserId().isEmpty()) {
+          userId_ = other.userId_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -7046,6 +8338,213 @@ public final class CommerceProtos {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private java.lang.Object baseSiteId_ = "";
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public java.lang.String getBaseSiteId() {
+        java.lang.Object ref = baseSiteId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          baseSiteId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getBaseSiteIdBytes() {
+        java.lang.Object ref = baseSiteId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          baseSiteId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public Builder setBaseSiteId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        baseSiteId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public Builder clearBaseSiteId() {
+        
+        baseSiteId_ = getDefaultInstance().getBaseSiteId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public Builder setBaseSiteIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        baseSiteId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object cartId_ = "";
+      /**
+       * <code>string cart_id = 2;</code>
+       */
+      public java.lang.String getCartId() {
+        java.lang.Object ref = cartId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          cartId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string cart_id = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCartIdBytes() {
+        java.lang.Object ref = cartId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cartId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string cart_id = 2;</code>
+       */
+      public Builder setCartId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        cartId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string cart_id = 2;</code>
+       */
+      public Builder clearCartId() {
+        
+        cartId_ = getDefaultInstance().getCartId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string cart_id = 2;</code>
+       */
+      public Builder setCartIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        cartId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object userId_ = "";
+      /**
+       * <code>string user_id = 3;</code>
+       */
+      public java.lang.String getUserId() {
+        java.lang.Object ref = userId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string user_id = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserIdBytes() {
+        java.lang.Object ref = userId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string user_id = 3;</code>
+       */
+      public Builder setUserId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string user_id = 3;</code>
+       */
+      public Builder clearUserId() {
+        
+        userId_ = getDefaultInstance().getUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string user_id = 3;</code>
+       */
+      public Builder setUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userId_ = value;
+        onChanged();
         return this;
       }
       @java.lang.Override
@@ -9435,1166 +10934,16 @@ public final class CommerceProtos {
 
   }
 
-  public interface EventBusMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:EventBusMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string source_id = 1[json_name = "source-id"];</code>
-     */
-    java.lang.String getSourceId();
-    /**
-     * <code>string source_id = 1[json_name = "source-id"];</code>
-     */
-    com.google.protobuf.ByteString
-        getSourceIdBytes();
-
-    /**
-     * <code>string event_type = 2[json_name = "event-type"];</code>
-     */
-    java.lang.String getEventType();
-    /**
-     * <code>string event_type = 2[json_name = "event-type"];</code>
-     */
-    com.google.protobuf.ByteString
-        getEventTypeBytes();
-
-    /**
-     * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-     */
-    java.lang.String getEventTypeVersion();
-    /**
-     * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-     */
-    com.google.protobuf.ByteString
-        getEventTypeVersionBytes();
-
-    /**
-     * <code>string event_time = 4[json_name = "event-type"];</code>
-     */
-    java.lang.String getEventTime();
-    /**
-     * <code>string event_time = 4[json_name = "event-type"];</code>
-     */
-    com.google.protobuf.ByteString
-        getEventTimeBytes();
-
-    /**
-     * <code>.Event data = 5;</code>
-     */
-    boolean hasData();
-    /**
-     * <code>.Event data = 5;</code>
-     */
-    com.pyrite.cartabandonmentservice.CommerceProtos.Event getData();
-    /**
-     * <code>.Event data = 5;</code>
-     */
-    com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getDataOrBuilder();
-  }
-  /**
-   * Protobuf type {@code EventBusMessage}
-   */
-  public  static final class EventBusMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:EventBusMessage)
-      EventBusMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use EventBusMessage.newBuilder() to construct.
-    private EventBusMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private EventBusMessage() {
-      sourceId_ = "";
-      eventType_ = "";
-      eventTypeVersion_ = "";
-      eventTime_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private EventBusMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              sourceId_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              eventType_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              eventTypeVersion_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              eventTime_ = s;
-              break;
-            }
-            case 42: {
-              com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder subBuilder = null;
-              if (data_ != null) {
-                subBuilder = data_.toBuilder();
-              }
-              data_ = input.readMessage(com.pyrite.cartabandonmentservice.CommerceProtos.Event.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(data_);
-                data_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventBusMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventBusMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage.class, com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage.Builder.class);
-    }
-
-    public static final int SOURCE_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object sourceId_;
-    /**
-     * <code>string source_id = 1[json_name = "source-id"];</code>
-     */
-    public java.lang.String getSourceId() {
-      java.lang.Object ref = sourceId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        sourceId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string source_id = 1[json_name = "source-id"];</code>
-     */
-    public com.google.protobuf.ByteString
-        getSourceIdBytes() {
-      java.lang.Object ref = sourceId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sourceId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int EVENT_TYPE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object eventType_;
-    /**
-     * <code>string event_type = 2[json_name = "event-type"];</code>
-     */
-    public java.lang.String getEventType() {
-      java.lang.Object ref = eventType_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        eventType_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string event_type = 2[json_name = "event-type"];</code>
-     */
-    public com.google.protobuf.ByteString
-        getEventTypeBytes() {
-      java.lang.Object ref = eventType_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        eventType_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int EVENT_TYPE_VERSION_FIELD_NUMBER = 3;
-    private volatile java.lang.Object eventTypeVersion_;
-    /**
-     * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-     */
-    public java.lang.String getEventTypeVersion() {
-      java.lang.Object ref = eventTypeVersion_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        eventTypeVersion_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-     */
-    public com.google.protobuf.ByteString
-        getEventTypeVersionBytes() {
-      java.lang.Object ref = eventTypeVersion_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        eventTypeVersion_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int EVENT_TIME_FIELD_NUMBER = 4;
-    private volatile java.lang.Object eventTime_;
-    /**
-     * <code>string event_time = 4[json_name = "event-type"];</code>
-     */
-    public java.lang.String getEventTime() {
-      java.lang.Object ref = eventTime_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        eventTime_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string event_time = 4[json_name = "event-type"];</code>
-     */
-    public com.google.protobuf.ByteString
-        getEventTimeBytes() {
-      java.lang.Object ref = eventTime_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        eventTime_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DATA_FIELD_NUMBER = 5;
-    private com.pyrite.cartabandonmentservice.CommerceProtos.Event data_;
-    /**
-     * <code>.Event data = 5;</code>
-     */
-    public boolean hasData() {
-      return data_ != null;
-    }
-    /**
-     * <code>.Event data = 5;</code>
-     */
-    public com.pyrite.cartabandonmentservice.CommerceProtos.Event getData() {
-      return data_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.Event.getDefaultInstance() : data_;
-    }
-    /**
-     * <code>.Event data = 5;</code>
-     */
-    public com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getDataOrBuilder() {
-      return getData();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getSourceIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, sourceId_);
-      }
-      if (!getEventTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, eventType_);
-      }
-      if (!getEventTypeVersionBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, eventTypeVersion_);
-      }
-      if (!getEventTimeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, eventTime_);
-      }
-      if (data_ != null) {
-        output.writeMessage(5, getData());
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getSourceIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, sourceId_);
-      }
-      if (!getEventTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, eventType_);
-      }
-      if (!getEventTypeVersionBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, eventTypeVersion_);
-      }
-      if (!getEventTimeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, eventTime_);
-      }
-      if (data_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getData());
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage)) {
-        return super.equals(obj);
-      }
-      com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage other = (com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage) obj;
-
-      boolean result = true;
-      result = result && getSourceId()
-          .equals(other.getSourceId());
-      result = result && getEventType()
-          .equals(other.getEventType());
-      result = result && getEventTypeVersion()
-          .equals(other.getEventTypeVersion());
-      result = result && getEventTime()
-          .equals(other.getEventTime());
-      result = result && (hasData() == other.hasData());
-      if (hasData()) {
-        result = result && getData()
-            .equals(other.getData());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SOURCE_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getSourceId().hashCode();
-      hash = (37 * hash) + EVENT_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getEventType().hashCode();
-      hash = (37 * hash) + EVENT_TYPE_VERSION_FIELD_NUMBER;
-      hash = (53 * hash) + getEventTypeVersion().hashCode();
-      hash = (37 * hash) + EVENT_TIME_FIELD_NUMBER;
-      hash = (53 * hash) + getEventTime().hashCode();
-      if (hasData()) {
-        hash = (37 * hash) + DATA_FIELD_NUMBER;
-        hash = (53 * hash) + getData().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code EventBusMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:EventBusMessage)
-        com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventBusMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventBusMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage.class, com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage.Builder.class);
-      }
-
-      // Construct using com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        sourceId_ = "";
-
-        eventType_ = "";
-
-        eventTypeVersion_ = "";
-
-        eventTime_ = "";
-
-        if (dataBuilder_ == null) {
-          data_ = null;
-        } else {
-          data_ = null;
-          dataBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_EventBusMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage getDefaultInstanceForType() {
-        return com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage build() {
-        com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage buildPartial() {
-        com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage result = new com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage(this);
-        result.sourceId_ = sourceId_;
-        result.eventType_ = eventType_;
-        result.eventTypeVersion_ = eventTypeVersion_;
-        result.eventTime_ = eventTime_;
-        if (dataBuilder_ == null) {
-          result.data_ = data_;
-        } else {
-          result.data_ = dataBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage) {
-          return mergeFrom((com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage other) {
-        if (other == com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage.getDefaultInstance()) return this;
-        if (!other.getSourceId().isEmpty()) {
-          sourceId_ = other.sourceId_;
-          onChanged();
-        }
-        if (!other.getEventType().isEmpty()) {
-          eventType_ = other.eventType_;
-          onChanged();
-        }
-        if (!other.getEventTypeVersion().isEmpty()) {
-          eventTypeVersion_ = other.eventTypeVersion_;
-          onChanged();
-        }
-        if (!other.getEventTime().isEmpty()) {
-          eventTime_ = other.eventTime_;
-          onChanged();
-        }
-        if (other.hasData()) {
-          mergeData(other.getData());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object sourceId_ = "";
-      /**
-       * <code>string source_id = 1[json_name = "source-id"];</code>
-       */
-      public java.lang.String getSourceId() {
-        java.lang.Object ref = sourceId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          sourceId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string source_id = 1[json_name = "source-id"];</code>
-       */
-      public com.google.protobuf.ByteString
-          getSourceIdBytes() {
-        java.lang.Object ref = sourceId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          sourceId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string source_id = 1[json_name = "source-id"];</code>
-       */
-      public Builder setSourceId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        sourceId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string source_id = 1[json_name = "source-id"];</code>
-       */
-      public Builder clearSourceId() {
-        
-        sourceId_ = getDefaultInstance().getSourceId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string source_id = 1[json_name = "source-id"];</code>
-       */
-      public Builder setSourceIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        sourceId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object eventType_ = "";
-      /**
-       * <code>string event_type = 2[json_name = "event-type"];</code>
-       */
-      public java.lang.String getEventType() {
-        java.lang.Object ref = eventType_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          eventType_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string event_type = 2[json_name = "event-type"];</code>
-       */
-      public com.google.protobuf.ByteString
-          getEventTypeBytes() {
-        java.lang.Object ref = eventType_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          eventType_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string event_type = 2[json_name = "event-type"];</code>
-       */
-      public Builder setEventType(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        eventType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string event_type = 2[json_name = "event-type"];</code>
-       */
-      public Builder clearEventType() {
-        
-        eventType_ = getDefaultInstance().getEventType();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string event_type = 2[json_name = "event-type"];</code>
-       */
-      public Builder setEventTypeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        eventType_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object eventTypeVersion_ = "";
-      /**
-       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-       */
-      public java.lang.String getEventTypeVersion() {
-        java.lang.Object ref = eventTypeVersion_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          eventTypeVersion_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-       */
-      public com.google.protobuf.ByteString
-          getEventTypeVersionBytes() {
-        java.lang.Object ref = eventTypeVersion_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          eventTypeVersion_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-       */
-      public Builder setEventTypeVersion(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        eventTypeVersion_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-       */
-      public Builder clearEventTypeVersion() {
-        
-        eventTypeVersion_ = getDefaultInstance().getEventTypeVersion();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string event_type_version = 3[json_name = "event-type-version"];</code>
-       */
-      public Builder setEventTypeVersionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        eventTypeVersion_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object eventTime_ = "";
-      /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
-       */
-      public java.lang.String getEventTime() {
-        java.lang.Object ref = eventTime_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          eventTime_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
-       */
-      public com.google.protobuf.ByteString
-          getEventTimeBytes() {
-        java.lang.Object ref = eventTime_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          eventTime_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
-       */
-      public Builder setEventTime(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        eventTime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
-       */
-      public Builder clearEventTime() {
-        
-        eventTime_ = getDefaultInstance().getEventTime();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
-       */
-      public Builder setEventTimeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        eventTime_ = value;
-        onChanged();
-        return this;
-      }
-
-      private com.pyrite.cartabandonmentservice.CommerceProtos.Event data_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> dataBuilder_;
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      public boolean hasData() {
-        return dataBuilder_ != null || data_ != null;
-      }
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      public com.pyrite.cartabandonmentservice.CommerceProtos.Event getData() {
-        if (dataBuilder_ == null) {
-          return data_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.Event.getDefaultInstance() : data_;
-        } else {
-          return dataBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      public Builder setData(com.pyrite.cartabandonmentservice.CommerceProtos.Event value) {
-        if (dataBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          data_ = value;
-          onChanged();
-        } else {
-          dataBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      public Builder setData(
-          com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder builderForValue) {
-        if (dataBuilder_ == null) {
-          data_ = builderForValue.build();
-          onChanged();
-        } else {
-          dataBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      public Builder mergeData(com.pyrite.cartabandonmentservice.CommerceProtos.Event value) {
-        if (dataBuilder_ == null) {
-          if (data_ != null) {
-            data_ =
-              com.pyrite.cartabandonmentservice.CommerceProtos.Event.newBuilder(data_).mergeFrom(value).buildPartial();
-          } else {
-            data_ = value;
-          }
-          onChanged();
-        } else {
-          dataBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      public Builder clearData() {
-        if (dataBuilder_ == null) {
-          data_ = null;
-          onChanged();
-        } else {
-          data_ = null;
-          dataBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      public com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder getDataBuilder() {
-        
-        onChanged();
-        return getDataFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      public com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder getDataOrBuilder() {
-        if (dataBuilder_ != null) {
-          return dataBuilder_.getMessageOrBuilder();
-        } else {
-          return data_ == null ?
-              com.pyrite.cartabandonmentservice.CommerceProtos.Event.getDefaultInstance() : data_;
-        }
-      }
-      /**
-       * <code>.Event data = 5;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder> 
-          getDataFieldBuilder() {
-        if (dataBuilder_ == null) {
-          dataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.pyrite.cartabandonmentservice.CommerceProtos.Event, com.pyrite.cartabandonmentservice.CommerceProtos.Event.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.EventOrBuilder>(
-                  getData(),
-                  getParentForChildren(),
-                  isClean());
-          data_ = null;
-        }
-        return dataBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:EventBusMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:EventBusMessage)
-    private static final com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage();
-    }
-
-    public static com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<EventBusMessage>
-        PARSER = new com.google.protobuf.AbstractParser<EventBusMessage>() {
-      @java.lang.Override
-      public EventBusMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EventBusMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<EventBusMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<EventBusMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.pyrite.cartabandonmentservice.CommerceProtos.EventBusMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_EventList_descriptor;
+    internal_static_Message_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_EventList_fieldAccessorTable;
+      internal_static_Message_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MessageList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MessageList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Event_descriptor;
   private static final 
@@ -10645,11 +10994,6 @@ public final class CommerceProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ProductRemoveFromCart_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_EventBusMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_EventBusMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -10660,40 +11004,42 @@ public final class CommerceProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n&eventgen/proto/commerce/commerce.proto" +
-      "\"\"\n\tEventList\022\025\n\005event\030\001 \003(\0132\006.Event\"\314\003\n" +
-      "\005Event\022\031\n\004type\030\001 \001(\0162\013.Event.Type\022*\n\020cus" +
-      "tomer_created\030\004 \001(\0132\020.CustomerCreated\022\"\n" +
-      "\014site_created\030\005 \001(\0132\014.SiteCreated\022(\n\017pro" +
-      "duct_created\030\006 \001(\0132\017.ProductCreated\0228\n\030c" +
-      "art_proceed_to_checkout\030\007 \001(\0132\026.CartProc" +
-      "eedToCheckout\022.\n\023product_add_to_cart\030\010 \001" +
-      "(\0132\021.ProductAddToCart\"\303\001\n\004Type\022\013\n\007UNKNOW" +
-      "N\020\000\022\024\n\020CUSTOMER_CREATED\020\002\022\020\n\014SITE_CREATE" +
-      "D\020\003\022\023\n\017PRODUCT_CREATED\020\004\022\034\n\030CART_PROCEED" +
-      "_TO_CHECKOUT\020\005\022\034\n\030CART_SUCCESSFUL_CHECKO" +
-      "UT\020\006\022\027\n\023PRODUCT_ADD_TO_CART\020\007\022\034\n\030PRODUCT" +
-      "_REMOVE_FROM_CART\020\010\"\\\n\017CustomerCreated\022\022" +
-      "\n\ncustomerId\030\001 \001(\t\022\024\n\014customer_uid\030\002 \001(\t" +
-      "\022\020\n\010store_id\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\">\n\013Sit" +
-      "eCreated\022\016\n\006siteId\030\001 \001(\t\022\020\n\010siteName\030\002 \001" +
-      "(\t\022\r\n\005email\030\004 \001(\t\"L\n\016ProductCreated\022\022\n\np" +
-      "roduct_id\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\021\n\t" +
-      "image_url\030\003 \001(\t\"4\n\013CartCreated\022\017\n\007cart_i" +
-      "d\030\001 \001(\t\022\024\n\014base_site_id\030\002 \001(\t\"O\n\025CartPro" +
-      "ceedToCheckout\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007" +
-      "cart_id\030\002 \001(\t\022\017\n\007user_id\030\003 \001(\t\"\030\n\026CartSu" +
-      "ccessfulCheckout\"\020\n\016OrderCancelled\"^\n\020Pr" +
-      "oductAddToCart\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007" +
-      "cart_id\030\002 \001(\t\022\022\n\nproduct_id\030\003 \001(\t\022\017\n\007use" +
-      "r_id\030\004 \001(\t\"c\n\025ProductRemoveFromCart\022\024\n\014b" +
-      "ase_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\022\n\npr" +
-      "oduct_id\030\003 \001(\t\022\017\n\007user_id\030\004 \001(\t\"\265\001\n\017Even" +
-      "tBusMessage\022\034\n\tsource_id\030\001 \001(\tR\tsource-i" +
-      "d\022\036\n\nevent_type\030\002 \001(\tR\nevent-type\022.\n\022eve" +
-      "nt_type_version\030\003 \001(\tR\022event-type-versio" +
-      "n\022\036\n\nevent_time\030\004 \001(\tR\nevent-type\022\024\n\004dat" +
-      "a\030\005 \001(\0132\006.EventB3\n!com.pyrite.cartabando" +
-      "nmentserviceB\016CommerceProtosb\006proto3"
+      "\"\255\001\n\007Message\022\034\n\tsource_id\030\001 \001(\tR\tsource-" +
+      "id\022\036\n\nevent_type\030\002 \001(\tR\nevent-type\022.\n\022ev" +
+      "ent_type_version\030\003 \001(\tR\022event-type-versi" +
+      "on\022\036\n\nevent_time\030\004 \001(\tR\nevent-type\022\024\n\004da" +
+      "ta\030\005 \001(\0132\006.Event\"(\n\013MessageList\022\031\n\007messa" +
+      "ge\030\001 \003(\0132\010.Message\"\314\003\n\005Event\022\031\n\004type\030\001 \001" +
+      "(\0162\013.Event.Type\022*\n\020customer_created\030\004 \001(" +
+      "\0132\020.CustomerCreated\022\"\n\014site_created\030\005 \001(" +
+      "\0132\014.SiteCreated\022(\n\017product_created\030\006 \001(\013" +
+      "2\017.ProductCreated\0228\n\030cart_proceed_to_che" +
+      "ckout\030\007 \001(\0132\026.CartProceedToCheckout\022.\n\023p" +
+      "roduct_add_to_cart\030\010 \001(\0132\021.ProductAddToC" +
+      "art\"\303\001\n\004Type\022\013\n\007UNKNOWN\020\000\022\024\n\020CUSTOMER_CR" +
+      "EATED\020\002\022\020\n\014SITE_CREATED\020\003\022\023\n\017PRODUCT_CRE" +
+      "ATED\020\004\022\034\n\030CART_PROCEED_TO_CHECKOUT\020\005\022\034\n\030" +
+      "CART_SUCCESSFUL_CHECKOUT\020\006\022\027\n\023PRODUCT_AD" +
+      "D_TO_CART\020\007\022\034\n\030PRODUCT_REMOVE_FROM_CART\020" +
+      "\010\"]\n\017CustomerCreated\022\023\n\013customer_id\030\001 \001(" +
+      "\t\022\024\n\014customer_uid\030\002 \001(\t\022\020\n\010store_id\030\003 \001(" +
+      "\t\022\r\n\005email\030\004 \001(\t\"B\n\013SiteCreated\022\017\n\007site_" +
+      "id\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\r\n\005email\030\004" +
+      " \001(\t\"L\n\016ProductCreated\022\022\n\nproduct_id\030\001 \001" +
+      "(\t\022\023\n\013description\030\002 \001(\t\022\021\n\timage_url\030\003 \001" +
+      "(\t\"4\n\013CartCreated\022\017\n\007cart_id\030\001 \001(\t\022\024\n\014ba" +
+      "se_site_id\030\002 \001(\t\"O\n\025CartProceedToCheckou" +
+      "t\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t" +
+      "\022\017\n\007user_id\030\003 \001(\t\"P\n\026CartSuccessfulCheck" +
+      "out\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001" +
+      "(\t\022\017\n\007user_id\030\003 \001(\t\"\020\n\016OrderCancelled\"^\n" +
+      "\020ProductAddToCart\022\024\n\014base_site_id\030\001 \001(\t\022" +
+      "\017\n\007cart_id\030\002 \001(\t\022\022\n\nproduct_id\030\003 \001(\t\022\017\n\007" +
+      "user_id\030\004 \001(\t\"c\n\025ProductRemoveFromCart\022\024" +
+      "\n\014base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\022\n" +
+      "\nproduct_id\030\003 \001(\t\022\017\n\007user_id\030\004 \001(\tB3\n!co" +
+      "m.pyrite.cartabandonmentserviceB\016Commerc" +
+      "eProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -10707,78 +11053,78 @@ public final class CommerceProtos {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_EventList_descriptor =
+    internal_static_Message_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_EventList_fieldAccessorTable = new
+    internal_static_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_EventList_descriptor,
-        new java.lang.String[] { "Event", });
-    internal_static_Event_descriptor =
+        internal_static_Message_descriptor,
+        new java.lang.String[] { "SourceId", "EventType", "EventTypeVersion", "EventTime", "Data", });
+    internal_static_MessageList_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_MessageList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MessageList_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_Event_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_Event_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Event_descriptor,
         new java.lang.String[] { "Type", "CustomerCreated", "SiteCreated", "ProductCreated", "CartProceedToCheckout", "ProductAddToCart", });
     internal_static_CustomerCreated_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_CustomerCreated_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CustomerCreated_descriptor,
         new java.lang.String[] { "CustomerId", "CustomerUid", "StoreId", "Email", });
     internal_static_SiteCreated_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_SiteCreated_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SiteCreated_descriptor,
-        new java.lang.String[] { "SiteId", "SiteName", "Email", });
+        new java.lang.String[] { "SiteId", "Description", "Email", });
     internal_static_ProductCreated_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_ProductCreated_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductCreated_descriptor,
         new java.lang.String[] { "ProductId", "Description", "ImageUrl", });
     internal_static_CartCreated_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_CartCreated_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CartCreated_descriptor,
         new java.lang.String[] { "CartId", "BaseSiteId", });
     internal_static_CartProceedToCheckout_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_CartProceedToCheckout_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CartProceedToCheckout_descriptor,
         new java.lang.String[] { "BaseSiteId", "CartId", "UserId", });
     internal_static_CartSuccessfulCheckout_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_CartSuccessfulCheckout_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CartSuccessfulCheckout_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "BaseSiteId", "CartId", "UserId", });
     internal_static_OrderCancelled_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_OrderCancelled_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_OrderCancelled_descriptor,
         new java.lang.String[] { });
     internal_static_ProductAddToCart_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_ProductAddToCart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductAddToCart_descriptor,
         new java.lang.String[] { "BaseSiteId", "CartId", "ProductId", "UserId", });
     internal_static_ProductRemoveFromCart_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_ProductRemoveFromCart_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductRemoveFromCart_descriptor,
         new java.lang.String[] { "BaseSiteId", "CartId", "ProductId", "UserId", });
-    internal_static_EventBusMessage_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_EventBusMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_EventBusMessage_descriptor,
-        new java.lang.String[] { "SourceId", "EventType", "EventTypeVersion", "EventTime", "Data", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
