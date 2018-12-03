@@ -1,0 +1,12 @@
+apiVersion: gateway.kyma.cx/v1alpha2
+kind: Api
+metadata:
+  labels:
+    app: cart-abandonment
+  name: cart-abandonment
+  namespace: stage
+spec:
+  hostname: cartabandonment.sa-hackathon-10.cluster.extend.sap.cx
+  service:
+    name: cart-abandonment
+    port: 80
