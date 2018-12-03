@@ -23,5 +23,10 @@ some discounted items:
 
 Container registry `pyrite.azurecr.io` is available with instructions on slack.  
 
+
+## LINKS
+
+* [Kyma Github](https://github.com/kyma)
+
 TODO: create image pull secret 
 
