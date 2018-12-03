@@ -2041,6 +2041,19 @@ public final class CommerceProtos {
      * <code>.CartSuccessfulCheckout cart_successful_checkout = 9;</code>
      */
     com.pyrite.cartabandonmentservice.CommerceProtos.CartSuccessfulCheckoutOrBuilder getCartSuccessfulCheckoutOrBuilder();
+
+    /**
+     * <code>.CartCreated cart_created = 10;</code>
+     */
+    boolean hasCartCreated();
+    /**
+     * <code>.CartCreated cart_created = 10;</code>
+     */
+    com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated getCartCreated();
+    /**
+     * <code>.CartCreated cart_created = 10;</code>
+     */
+    com.pyrite.cartabandonmentservice.CommerceProtos.CartCreatedOrBuilder getCartCreatedOrBuilder();
   }
   /**
    * Protobuf type {@code Event}
@@ -2166,6 +2179,19 @@ public final class CommerceProtos {
 
               break;
             }
+            case 82: {
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.Builder subBuilder = null;
+              if (cartCreated_ != null) {
+                subBuilder = cartCreated_.toBuilder();
+              }
+              cartCreated_ = input.readMessage(com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cartCreated_);
+                cartCreated_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2239,6 +2265,10 @@ public final class CommerceProtos {
        * <code>PRODUCT_REMOVE_FROM_CART = 8;</code>
        */
       PRODUCT_REMOVE_FROM_CART(8),
+      /**
+       * <code>CART_CREATED = 9;</code>
+       */
+      CART_CREATED(9),
       UNRECOGNIZED(-1),
       ;
 
@@ -2274,6 +2304,10 @@ public final class CommerceProtos {
        * <code>PRODUCT_REMOVE_FROM_CART = 8;</code>
        */
       public static final int PRODUCT_REMOVE_FROM_CART_VALUE = 8;
+      /**
+       * <code>CART_CREATED = 9;</code>
+       */
+      public static final int CART_CREATED_VALUE = 9;
 
 
       public final int getNumber() {
@@ -2302,6 +2336,7 @@ public final class CommerceProtos {
           case 6: return CART_SUCCESSFUL_CHECKOUT;
           case 7: return PRODUCT_ADD_TO_CART;
           case 8: return PRODUCT_REMOVE_FROM_CART;
+          case 9: return CART_CREATED;
           default: return null;
         }
       }
@@ -2497,6 +2532,27 @@ public final class CommerceProtos {
       return getCartSuccessfulCheckout();
     }
 
+    public static final int CART_CREATED_FIELD_NUMBER = 10;
+    private com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated cartCreated_;
+    /**
+     * <code>.CartCreated cart_created = 10;</code>
+     */
+    public boolean hasCartCreated() {
+      return cartCreated_ != null;
+    }
+    /**
+     * <code>.CartCreated cart_created = 10;</code>
+     */
+    public com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated getCartCreated() {
+      return cartCreated_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.getDefaultInstance() : cartCreated_;
+    }
+    /**
+     * <code>.CartCreated cart_created = 10;</code>
+     */
+    public com.pyrite.cartabandonmentservice.CommerceProtos.CartCreatedOrBuilder getCartCreatedOrBuilder() {
+      return getCartCreated();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2531,6 +2587,9 @@ public final class CommerceProtos {
       }
       if (cartSuccessfulCheckout_ != null) {
         output.writeMessage(9, getCartSuccessfulCheckout());
+      }
+      if (cartCreated_ != null) {
+        output.writeMessage(10, getCartCreated());
       }
       unknownFields.writeTo(output);
     }
@@ -2568,6 +2627,10 @@ public final class CommerceProtos {
       if (cartSuccessfulCheckout_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, getCartSuccessfulCheckout());
+      }
+      if (cartCreated_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, getCartCreated());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2616,6 +2679,11 @@ public final class CommerceProtos {
         result = result && getCartSuccessfulCheckout()
             .equals(other.getCartSuccessfulCheckout());
       }
+      result = result && (hasCartCreated() == other.hasCartCreated());
+      if (hasCartCreated()) {
+        result = result && getCartCreated()
+            .equals(other.getCartCreated());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2652,6 +2720,10 @@ public final class CommerceProtos {
       if (hasCartSuccessfulCheckout()) {
         hash = (37 * hash) + CART_SUCCESSFUL_CHECKOUT_FIELD_NUMBER;
         hash = (53 * hash) + getCartSuccessfulCheckout().hashCode();
+      }
+      if (hasCartCreated()) {
+        hash = (37 * hash) + CART_CREATED_FIELD_NUMBER;
+        hash = (53 * hash) + getCartCreated().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2824,6 +2896,12 @@ public final class CommerceProtos {
           cartSuccessfulCheckout_ = null;
           cartSuccessfulCheckoutBuilder_ = null;
         }
+        if (cartCreatedBuilder_ == null) {
+          cartCreated_ = null;
+        } else {
+          cartCreated_ = null;
+          cartCreatedBuilder_ = null;
+        }
         return this;
       }
 
@@ -2880,6 +2958,11 @@ public final class CommerceProtos {
           result.cartSuccessfulCheckout_ = cartSuccessfulCheckout_;
         } else {
           result.cartSuccessfulCheckout_ = cartSuccessfulCheckoutBuilder_.build();
+        }
+        if (cartCreatedBuilder_ == null) {
+          result.cartCreated_ = cartCreated_;
+        } else {
+          result.cartCreated_ = cartCreatedBuilder_.build();
         }
         onBuilt();
         return result;
@@ -2949,6 +3032,9 @@ public final class CommerceProtos {
         }
         if (other.hasCartSuccessfulCheckout()) {
           mergeCartSuccessfulCheckout(other.getCartSuccessfulCheckout());
+        }
+        if (other.hasCartCreated()) {
+          mergeCartCreated(other.getCartCreated());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3725,6 +3811,123 @@ public final class CommerceProtos {
         }
         return cartSuccessfulCheckoutBuilder_;
       }
+
+      private com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated cartCreated_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated, com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.CartCreatedOrBuilder> cartCreatedBuilder_;
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      public boolean hasCartCreated() {
+        return cartCreatedBuilder_ != null || cartCreated_ != null;
+      }
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated getCartCreated() {
+        if (cartCreatedBuilder_ == null) {
+          return cartCreated_ == null ? com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.getDefaultInstance() : cartCreated_;
+        } else {
+          return cartCreatedBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      public Builder setCartCreated(com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated value) {
+        if (cartCreatedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          cartCreated_ = value;
+          onChanged();
+        } else {
+          cartCreatedBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      public Builder setCartCreated(
+          com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.Builder builderForValue) {
+        if (cartCreatedBuilder_ == null) {
+          cartCreated_ = builderForValue.build();
+          onChanged();
+        } else {
+          cartCreatedBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      public Builder mergeCartCreated(com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated value) {
+        if (cartCreatedBuilder_ == null) {
+          if (cartCreated_ != null) {
+            cartCreated_ =
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.newBuilder(cartCreated_).mergeFrom(value).buildPartial();
+          } else {
+            cartCreated_ = value;
+          }
+          onChanged();
+        } else {
+          cartCreatedBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      public Builder clearCartCreated() {
+        if (cartCreatedBuilder_ == null) {
+          cartCreated_ = null;
+          onChanged();
+        } else {
+          cartCreated_ = null;
+          cartCreatedBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.Builder getCartCreatedBuilder() {
+        
+        onChanged();
+        return getCartCreatedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartCreatedOrBuilder getCartCreatedOrBuilder() {
+        if (cartCreatedBuilder_ != null) {
+          return cartCreatedBuilder_.getMessageOrBuilder();
+        } else {
+          return cartCreated_ == null ?
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.getDefaultInstance() : cartCreated_;
+        }
+      }
+      /**
+       * <code>.CartCreated cart_created = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated, com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.CartCreatedOrBuilder> 
+          getCartCreatedFieldBuilder() {
+        if (cartCreatedBuilder_ == null) {
+          cartCreatedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated, com.pyrite.cartabandonmentservice.CommerceProtos.CartCreated.Builder, com.pyrite.cartabandonmentservice.CommerceProtos.CartCreatedOrBuilder>(
+                  getCartCreated(),
+                  getParentForChildren(),
+                  isClean());
+          cartCreated_ = null;
+        }
+        return cartCreatedBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3829,6 +4032,16 @@ public final class CommerceProtos {
      */
     com.google.protobuf.ByteString
         getEmailBytes();
+
+    /**
+     * <code>string name = 5;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
   }
   /**
    * Protobuf type {@code CustomerCreated}
@@ -3847,6 +4060,7 @@ public final class CommerceProtos {
       customerUid_ = "";
       storeId_ = "";
       email_ = "";
+      name_ = "";
     }
 
     @java.lang.Override
@@ -3895,6 +4109,12 @@ public final class CommerceProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               email_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
               break;
             }
             default: {
@@ -4073,6 +4293,40 @@ public final class CommerceProtos {
       }
     }
 
+    public static final int NAME_FIELD_NUMBER = 5;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 5;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4099,6 +4353,9 @@ public final class CommerceProtos {
       if (!getEmailBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, email_);
       }
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, name_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4119,6 +4376,9 @@ public final class CommerceProtos {
       }
       if (!getEmailBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, email_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, name_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4144,6 +4404,8 @@ public final class CommerceProtos {
           .equals(other.getStoreId());
       result = result && getEmail()
           .equals(other.getEmail());
+      result = result && getName()
+          .equals(other.getName());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -4163,6 +4425,8 @@ public final class CommerceProtos {
       hash = (53 * hash) + getStoreId().hashCode();
       hash = (37 * hash) + EMAIL_FIELD_NUMBER;
       hash = (53 * hash) + getEmail().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4304,6 +4568,8 @@ public final class CommerceProtos {
 
         email_ = "";
 
+        name_ = "";
+
         return this;
       }
 
@@ -4334,6 +4600,7 @@ public final class CommerceProtos {
         result.customerUid_ = customerUid_;
         result.storeId_ = storeId_;
         result.email_ = email_;
+        result.name_ = name_;
         onBuilt();
         return result;
       }
@@ -4396,6 +4663,10 @@ public final class CommerceProtos {
         }
         if (!other.getEmail().isEmpty()) {
           email_ = other.email_;
+          onChanged();
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -4722,6 +4993,75 @@ public final class CommerceProtos {
         onChanged();
         return this;
       }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 5;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 5;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 5;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 5;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4798,24 +5138,6 @@ public final class CommerceProtos {
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
-
-    /**
-     * <pre>
-     * fake field
-     * </pre>
-     *
-     * <code>string email = 4;</code>
-     */
-    java.lang.String getEmail();
-    /**
-     * <pre>
-     * fake field
-     * </pre>
-     *
-     * <code>string email = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getEmailBytes();
   }
   /**
    * Protobuf type {@code SiteCreated}
@@ -4832,7 +5154,6 @@ public final class CommerceProtos {
     private SiteCreated() {
       siteId_ = "";
       description_ = "";
-      email_ = "";
     }
 
     @java.lang.Override
@@ -4869,12 +5190,6 @@ public final class CommerceProtos {
               java.lang.String s = input.readStringRequireUtf8();
 
               description_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              email_ = s;
               break;
             }
             default: {
@@ -4977,48 +5292,6 @@ public final class CommerceProtos {
       }
     }
 
-    public static final int EMAIL_FIELD_NUMBER = 4;
-    private volatile java.lang.Object email_;
-    /**
-     * <pre>
-     * fake field
-     * </pre>
-     *
-     * <code>string email = 4;</code>
-     */
-    public java.lang.String getEmail() {
-      java.lang.Object ref = email_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        email_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * fake field
-     * </pre>
-     *
-     * <code>string email = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
-      java.lang.Object ref = email_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        email_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5039,9 +5312,6 @@ public final class CommerceProtos {
       if (!getDescriptionBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
       }
-      if (!getEmailBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, email_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -5056,9 +5326,6 @@ public final class CommerceProtos {
       }
       if (!getDescriptionBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
-      }
-      if (!getEmailBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, email_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5080,8 +5347,6 @@ public final class CommerceProtos {
           .equals(other.getSiteId());
       result = result && getDescription()
           .equals(other.getDescription());
-      result = result && getEmail()
-          .equals(other.getEmail());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5097,8 +5362,6 @@ public final class CommerceProtos {
       hash = (53 * hash) + getSiteId().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getDescription().hashCode();
-      hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-      hash = (53 * hash) + getEmail().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5236,8 +5499,6 @@ public final class CommerceProtos {
 
         description_ = "";
 
-        email_ = "";
-
         return this;
       }
 
@@ -5266,7 +5527,6 @@ public final class CommerceProtos {
         com.pyrite.cartabandonmentservice.CommerceProtos.SiteCreated result = new com.pyrite.cartabandonmentservice.CommerceProtos.SiteCreated(this);
         result.siteId_ = siteId_;
         result.description_ = description_;
-        result.email_ = email_;
         onBuilt();
         return result;
       }
@@ -5321,10 +5581,6 @@ public final class CommerceProtos {
         }
         if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
-          onChanged();
-        }
-        if (!other.getEmail().isEmpty()) {
-          email_ = other.email_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -5490,95 +5746,6 @@ public final class CommerceProtos {
   checkByteStringIsUtf8(value);
         
         description_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object email_ = "";
-      /**
-       * <pre>
-       * fake field
-       * </pre>
-       *
-       * <code>string email = 4;</code>
-       */
-      public java.lang.String getEmail() {
-        java.lang.Object ref = email_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          email_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * fake field
-       * </pre>
-       *
-       * <code>string email = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getEmailBytes() {
-        java.lang.Object ref = email_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          email_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * fake field
-       * </pre>
-       *
-       * <code>string email = 4;</code>
-       */
-      public Builder setEmail(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        email_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * fake field
-       * </pre>
-       *
-       * <code>string email = 4;</code>
-       */
-      public Builder clearEmail() {
-        
-        email_ = getDefaultInstance().getEmail();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * fake field
-       * </pre>
-       *
-       * <code>string email = 4;</code>
-       */
-      public Builder setEmailBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        email_ = value;
         onChanged();
         return this;
       }
@@ -11340,7 +11507,7 @@ public final class CommerceProtos {
       "ent_type_version\030\003 \001(\tR\022event-type-versi" +
       "on\022\036\n\nevent_time\030\004 \001(\tR\nevent-type\022\024\n\004da" +
       "ta\030\005 \001(\0132\006.Event\"(\n\013MessageList\022\031\n\007messa" +
-      "ge\030\001 \003(\0132\010.Message\"\207\004\n\005Event\022\031\n\004type\030\001 \001" +
+      "ge\030\001 \003(\0132\010.Message\"\275\004\n\005Event\022\031\n\004type\030\001 \001" +
       "(\0162\013.Event.Type\022*\n\020customer_created\030\004 \001(" +
       "\0132\020.CustomerCreated\022\"\n\014site_created\030\005 \001(" +
       "\0132\014.SiteCreated\022(\n\017product_created\030\006 \001(\013" +
@@ -11348,31 +11515,32 @@ public final class CommerceProtos {
       "ckout\030\007 \001(\0132\026.CartProceedToCheckout\022.\n\023p" +
       "roduct_add_to_cart\030\010 \001(\0132\021.ProductAddToC" +
       "art\0229\n\030cart_successful_checkout\030\t \001(\0132\027." +
-      "CartSuccessfulCheckout\"\303\001\n\004Type\022\013\n\007UNKNO" +
-      "WN\020\000\022\024\n\020CUSTOMER_CREATED\020\002\022\020\n\014SITE_CREAT" +
-      "ED\020\003\022\023\n\017PRODUCT_CREATED\020\004\022\034\n\030CART_PROCEE" +
-      "D_TO_CHECKOUT\020\005\022\034\n\030CART_SUCCESSFUL_CHECK" +
-      "OUT\020\006\022\027\n\023PRODUCT_ADD_TO_CART\020\007\022\034\n\030PRODUC" +
-      "T_REMOVE_FROM_CART\020\010\"]\n\017CustomerCreated\022" +
-      "\023\n\013customer_id\030\001 \001(\t\022\024\n\014customer_uid\030\002 \001" +
-      "(\t\022\020\n\010store_id\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\"B\n\013S" +
-      "iteCreated\022\017\n\007site_id\030\001 \001(\t\022\023\n\013descripti" +
-      "on\030\002 \001(\t\022\r\n\005email\030\004 \001(\t\"L\n\016ProductCreate" +
-      "d\022\022\n\nproduct_id\030\001 \001(\t\022\023\n\013description\030\002 \001" +
-      "(\t\022\021\n\timage_url\030\003 \001(\t\"4\n\013CartCreated\022\017\n\007" +
-      "cart_id\030\001 \001(\t\022\024\n\014base_site_id\030\002 \001(\t\"O\n\025C" +
-      "artProceedToCheckout\022\024\n\014base_site_id\030\001 \001" +
-      "(\t\022\017\n\007cart_id\030\002 \001(\t\022\017\n\007user_id\030\003 \001(\t\"P\n\026" +
-      "CartSuccessfulCheckout\022\024\n\014base_site_id\030\001" +
-      " \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\017\n\007user_id\030\003 \001(\t\"\020" +
-      "\n\016OrderCancelled\"r\n\020ProductAddToCart\022\024\n\014" +
-      "base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\022\n\np" +
-      "roduct_id\030\003 \001(\t\022\017\n\007user_id\030\004 \001(\t\022\022\n\neven" +
-      "t_time\030\005 \001(\t\"c\n\025ProductRemoveFromCart\022\024\n" +
-      "\014base_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\022\n\n" +
-      "product_id\030\003 \001(\t\022\017\n\007user_id\030\004 \001(\tB3\n!com" +
-      ".pyrite.cartabandonmentserviceB\016Commerce" +
-      "Protosb\006proto3"
+      "CartSuccessfulCheckout\022\"\n\014cart_created\030\n" +
+      " \001(\0132\014.CartCreated\"\325\001\n\004Type\022\013\n\007UNKNOWN\020\000" +
+      "\022\024\n\020CUSTOMER_CREATED\020\002\022\020\n\014SITE_CREATED\020\003" +
+      "\022\023\n\017PRODUCT_CREATED\020\004\022\034\n\030CART_PROCEED_TO" +
+      "_CHECKOUT\020\005\022\034\n\030CART_SUCCESSFUL_CHECKOUT\020" +
+      "\006\022\027\n\023PRODUCT_ADD_TO_CART\020\007\022\034\n\030PRODUCT_RE" +
+      "MOVE_FROM_CART\020\010\022\020\n\014CART_CREATED\020\t\"k\n\017Cu" +
+      "stomerCreated\022\023\n\013customer_id\030\001 \001(\t\022\024\n\014cu" +
+      "stomer_uid\030\002 \001(\t\022\020\n\010store_id\030\003 \001(\t\022\r\n\005em" +
+      "ail\030\004 \001(\t\022\014\n\004name\030\005 \001(\t\"3\n\013SiteCreated\022\017" +
+      "\n\007site_id\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\"L\n\016" +
+      "ProductCreated\022\022\n\nproduct_id\030\001 \001(\t\022\023\n\013de" +
+      "scription\030\002 \001(\t\022\021\n\timage_url\030\003 \001(\t\"4\n\013Ca" +
+      "rtCreated\022\017\n\007cart_id\030\001 \001(\t\022\024\n\014base_site_" +
+      "id\030\002 \001(\t\"O\n\025CartProceedToCheckout\022\024\n\014bas" +
+      "e_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\017\n\007user" +
+      "_id\030\003 \001(\t\"P\n\026CartSuccessfulCheckout\022\024\n\014b" +
+      "ase_site_id\030\001 \001(\t\022\017\n\007cart_id\030\002 \001(\t\022\017\n\007us" +
+      "er_id\030\003 \001(\t\"\020\n\016OrderCancelled\"r\n\020Product" +
+      "AddToCart\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007cart_" +
+      "id\030\002 \001(\t\022\022\n\nproduct_id\030\003 \001(\t\022\017\n\007user_id\030" +
+      "\004 \001(\t\022\022\n\nevent_time\030\005 \001(\t\"c\n\025ProductRemo" +
+      "veFromCart\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007cart" +
+      "_id\030\002 \001(\t\022\022\n\nproduct_id\030\003 \001(\t\022\017\n\007user_id" +
+      "\030\004 \001(\tB3\n!com.pyrite.cartabandonmentserv" +
+      "iceB\016CommerceProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11403,19 +11571,19 @@ public final class CommerceProtos {
     internal_static_Event_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Event_descriptor,
-        new java.lang.String[] { "Type", "CustomerCreated", "SiteCreated", "ProductCreated", "CartProceedToCheckout", "ProductAddToCart", "CartSuccessfulCheckout", });
+        new java.lang.String[] { "Type", "CustomerCreated", "SiteCreated", "ProductCreated", "CartProceedToCheckout", "ProductAddToCart", "CartSuccessfulCheckout", "CartCreated", });
     internal_static_CustomerCreated_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_CustomerCreated_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CustomerCreated_descriptor,
-        new java.lang.String[] { "CustomerId", "CustomerUid", "StoreId", "Email", });
+        new java.lang.String[] { "CustomerId", "CustomerUid", "StoreId", "Email", "Name", });
     internal_static_SiteCreated_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_SiteCreated_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SiteCreated_descriptor,
-        new java.lang.String[] { "SiteId", "Description", "Email", });
+        new java.lang.String[] { "SiteId", "Description", });
     internal_static_ProductCreated_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_ProductCreated_fieldAccessorTable = new

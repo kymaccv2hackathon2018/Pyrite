@@ -28,6 +28,7 @@ message Event {
         CART_SUCCESSFUL_CHECKOUT = 6;
         PRODUCT_ADD_TO_CART = 7;
         PRODUCT_REMOVE_FROM_CART = 8;
+        CART_CREATED = 9;
     }
 
     Type type = 1;
@@ -38,28 +39,26 @@ message Event {
     CartProceedToCheckout cart_proceed_to_checkout = 7;
     ProductAddToCart product_add_to_cart = 8;
     CartSuccessfulCheckout cart_successful_checkout = 9;
+    CartCreated cart_created = 10;
 }
 
 message CustomerCreated {
     string customer_id = 1;
     string customer_uid = 2;
     string store_id = 3;
-
     string email = 4; // fake field
+    string name = 5;
 }
 
 message SiteCreated {
     string site_id = 1;
     string description = 2;
-
-    string email = 4; // fake field
 }
 
 message ProductCreated {
     string product_id = 1;
     string description = 2;
     string image_url = 3;
-
 }
 
 message CartCreated {
