@@ -20,5 +20,8 @@ spec:
       - name: cart-abandonment
         image: pyrite.azurecr.io/cart-abandonment-service:latest
         imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9876
+          name: http
       serviceAccount: pyrite
       serviceAccountName: pyrite
