@@ -49,11 +49,11 @@ public final class CommerceProtos {
         getEventTypeVersionBytes();
 
     /**
-     * <code>string event_time = 4[json_name = "event-type"];</code>
+     * <code>string event_time = 4[json_name = "event-time"];</code>
      */
     java.lang.String getEventTime();
     /**
-     * <code>string event_time = 4[json_name = "event-type"];</code>
+     * <code>string event_time = 4[json_name = "event-time"];</code>
      */
     com.google.protobuf.ByteString
         getEventTimeBytes();
@@ -288,7 +288,7 @@ public final class CommerceProtos {
     public static final int EVENT_TIME_FIELD_NUMBER = 4;
     private volatile java.lang.Object eventTime_;
     /**
-     * <code>string event_time = 4[json_name = "event-type"];</code>
+     * <code>string event_time = 4[json_name = "event-time"];</code>
      */
     public java.lang.String getEventTime() {
       java.lang.Object ref = eventTime_;
@@ -303,7 +303,7 @@ public final class CommerceProtos {
       }
     }
     /**
-     * <code>string event_time = 4[json_name = "event-type"];</code>
+     * <code>string event_time = 4[json_name = "event-time"];</code>
      */
     public com.google.protobuf.ByteString
         getEventTimeBytes() {
@@ -933,7 +933,7 @@ public final class CommerceProtos {
 
       private java.lang.Object eventTime_ = "";
       /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
+       * <code>string event_time = 4[json_name = "event-time"];</code>
        */
       public java.lang.String getEventTime() {
         java.lang.Object ref = eventTime_;
@@ -948,7 +948,7 @@ public final class CommerceProtos {
         }
       }
       /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
+       * <code>string event_time = 4[json_name = "event-time"];</code>
        */
       public com.google.protobuf.ByteString
           getEventTimeBytes() {
@@ -964,7 +964,7 @@ public final class CommerceProtos {
         }
       }
       /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
+       * <code>string event_time = 4[json_name = "event-time"];</code>
        */
       public Builder setEventTime(
           java.lang.String value) {
@@ -977,7 +977,7 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
+       * <code>string event_time = 4[json_name = "event-time"];</code>
        */
       public Builder clearEventTime() {
         
@@ -986,7 +986,7 @@ public final class CommerceProtos {
         return this;
       }
       /**
-       * <code>string event_time = 4[json_name = "event-type"];</code>
+       * <code>string event_time = 4[json_name = "event-time"];</code>
        */
       public Builder setEventTimeBytes(
           com.google.protobuf.ByteString value) {
@@ -11505,7 +11505,7 @@ public final class CommerceProtos {
       "\"\255\001\n\007Message\022\034\n\tsource_id\030\001 \001(\tR\tsource-" +
       "id\022\036\n\nevent_type\030\002 \001(\tR\nevent-type\022.\n\022ev" +
       "ent_type_version\030\003 \001(\tR\022event-type-versi" +
-      "on\022\036\n\nevent_time\030\004 \001(\tR\nevent-type\022\024\n\004da" +
+      "on\022\036\n\nevent_time\030\004 \001(\tR\nevent-time\022\024\n\004da" +
       "ta\030\005 \001(\0132\006.Event\"(\n\013MessageList\022\031\n\007messa" +
       "ge\030\001 \003(\0132\010.Message\"\275\004\n\005Event\022\031\n\004type\030\001 \001" +
       "(\0162\013.Event.Type\022*\n\020customer_created\030\004 \001(" +

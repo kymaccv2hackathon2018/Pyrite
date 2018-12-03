@@ -3,7 +3,9 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"net/http"
+	"net/http/httputil"
 	"os"
 	"strings"
 	"time"
@@ -20,7 +22,7 @@ var sendCommand = &cli.Command{
 		&cli.StringFlag{
 			Name:   "endpoint",
 			Usage:  "Name of service to send events to",
-			Value:  "cart-abandonment-detector-stage.sa-hackathon-10.cluster.extend.sap.cx",
+			Value:  "https://cart-abandonment-detector-stage.sa-hackathon-10.cluster.extend.sap.cx",
 			EnvVar: "EVENTGEN_ENDPOINT",
 		},
 		&cli.StringFlag{
@@ -56,7 +58,7 @@ var sendCommand = &cli.Command{
 
 func send(ctx *cli.Context) error {
 	endpoint := ctx.String("endpoint")
-	dryRun := ctx.Bool("dryRun")
+	dryRun := ctx.Bool("dry_run")
 
 	// printEnvVars()
 
@@ -125,6 +127,17 @@ func post(endpoint string, dryRun bool, messageList *c.MessageList) (*http.Respo
 	}
 
 	resp, err := http.Post(endpoint, "application/json", &buf)
+	if err != nil {
+		return nil, err
+	}
+
+	dump, err := httputil.DumpResponse(resp, true)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("%q", dump)
+
 	return resp, err
 }
 

@@ -8,7 +8,7 @@ message Message {
     string source_id = 1 [json_name = "source-id"];
     string event_type = 2 [json_name = "event-type"];
     string event_type_version = 3 [json_name = "event-type-version"];
-    string event_time = 4 [json_name = "event-type"];
+    string event_time = 4 [json_name = "event-time"];
     Event data = 5;
 }
 
