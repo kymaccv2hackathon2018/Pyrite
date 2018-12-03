@@ -23,18 +23,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventStorage
 {
-	private Map<String, List<ProductAddToCart>> addToCartEvents = new LinkedHashMap<>();
-
+	private Map<String, List<Object>> userEvent = new LinkedHashMap<>();
+	
 
 	public void addToCartEvent(final String userId, final ProductAddToCart event)
 	{
-		if (addToCartEvents.containsKey(userId))
+		if (userEvent.containsKey(userId))
 		{
-			addToCartEvents.get(userId).add(event);
+			userEvent.get(userId).add(event);
 		}
 		else
 		{
-			addToCartEvents.put(userId, Arrays.asList(event));
+			userEvent.put(userId, Arrays.asList(event));
 		}
 
 	}
