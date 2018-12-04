@@ -13,6 +13,8 @@ package com.pyrite.cartabandonmentservice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -38,10 +40,10 @@ public class AbandonmentScheduler
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-	@Scheduled(fixedRate = 60000)
+	@Scheduled(fixedRate = 15000)
 	public void doThis()
 	{
-		log.warn("ABANDONMENT SCHEDULER TEST");
+		log.warn("ABANDONMENT SCHEDULER TRIGGERED");
 		final Map<String, List<CommerceProtos.ProductAddToCart>> userEvents = eventStorage.getCarts();
 
 		final Set<String> users = userEvents.keySet();
@@ -55,8 +57,7 @@ public class AbandonmentScheduler
 		final Optional<Date> activeProductsInCart = products.stream().map(p -> {
 			try
 			{
-				return DateUtils.parseDate(p.getEventTime(),
-						new String[]{"yyyy-MM-dd HH:mm:ss"});
+				return parseDate(p.getEventTime());
 			}
 			catch (ParseException e)
 			{
@@ -68,12 +69,22 @@ public class AbandonmentScheduler
 
 		if (!activeProductsInCart.isPresent())
 		{
+			log.warn("Abandoning Cart for user: " + userId);
 			// remove userId from event map
 			eventStorage.removeByUser(userId);
 			// add userId to abandoned map
 			eventStorage.addToAbandonedCarts(userId, products);
 			// generate event
 		}
+	}
+
+	public Date parseDate(final String date) throws ParseException
+	{
+//		return DateUtils.parseDate(date,
+//				new String[]{DateTimeFormatter.ISO_DATE_TIME});
+
+		final ZonedDateTime zonedDateTime = ZonedDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME);
+		return Date.from(zonedDateTime.toInstant());
 	}
 
 	private boolean productDateActive(final Date date)
