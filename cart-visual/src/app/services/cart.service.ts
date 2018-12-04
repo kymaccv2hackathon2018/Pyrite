@@ -14,9 +14,13 @@ import { catchError, map } from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CartModel} from '../model/cart.model';
 
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class CartService  {
+
+  protected baseUrl: string;
 
   private headers = new HttpHeaders()
     .append('Content-Type', 'application/json')
@@ -25,10 +29,11 @@ export class CartService  {
     .append('Access-Control-Allow-Origin', '*');
 
   constructor(protected http: HttpClient) {
+    this.baseUrl = environment.backendBaseUrl;
   }
 
   public getCarts(): Observable<Object[]> {
-    const url = '/api/cartAbandonment/carts';
+    const url = `${this.baseUrl}/cartAbandonment/carts`;
 
     return this.http.get<CartModel[]>(url, {headers: this.headers}).pipe(
       map((result) => {

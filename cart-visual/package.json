@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.js",
+    "start:prod": "ng serve --proxy-config proxy.conf.js --environment=prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
