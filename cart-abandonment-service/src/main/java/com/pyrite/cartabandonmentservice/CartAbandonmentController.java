@@ -17,6 +17,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +36,8 @@ import com.google.protobuf.util.JsonFormat;
 @RequestMapping("/cartAbandonment")
 public class CartAbandonmentController
 {
+	private static final Logger log = LoggerFactory.getLogger(CartAbandonmentController.class);
+
 	@Autowired
 	private CartAbandonmentEventHandler eventHandler;
 	@Autowired
@@ -63,9 +68,27 @@ public class CartAbandonmentController
 		return "Processed";
 	}
 
-	@GetMapping("/events")
+
+
+	/**
+	 * Recieve notification of an event.  The lambda will call this function.
+	 */
+	@PostMapping("/event")
 	@ResponseBody
-	public String getEvents()
+	public String event(final HttpServletRequest request) throws IOException
+	{
+		final String json = IOUtils.toString(request.getInputStream(), "UTF-8");
+
+		EventUtil.parseMessage(json, eventHandler);
+
+		log.info("Event processed {}", json);
+
+		return "Event successfully processed.";
+	}
+
+	@GetMapping("/carts")
+	@ResponseBody
+	public String getCarts()
 	{
 		final JsonFormat.Printer printer = JsonFormat.printer().includingDefaultValueFields();
 
@@ -87,6 +110,7 @@ public class CartAbandonmentController
 		});
 
 		return responseBuilder.toString();
-	}
+	}	
 }
+
 
