@@ -4,7 +4,7 @@ metadata:
   finalizers:
   - kubeless.io/function
   name: internal-lambda
-  namespace: commerce-samples
+  namespace: stage
 spec:
   deployment:
     spec:
@@ -18,7 +18,7 @@ spec:
   deps: ""
   function: |
     module.exports = { main: function (event, context) {
-    console.log("Hello! This is internal lambda");
+    console.log("Hello! This is internal lambda", arguments);
     console.log("Parameters:" + JSON.stringify(event.data));
     return "Internal lambda is called"
     } }

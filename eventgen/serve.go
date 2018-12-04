@@ -8,6 +8,7 @@ import (
 	"net/http/httputil"
 	"os"
 	"strings"
+	"sync"
 	"time"
 
 	jsonpb "github.com/golang/protobuf/jsonpb"
@@ -61,7 +62,7 @@ func send(ctx *cli.Context) error {
 	dryRun := ctx.Bool("dry_run")
 
 	// printEnvVars()
-	g := NewGenerator()
+	g := NewGenerator(endpoint, dryRun)
 
 	// Populate sites
 	bikes := g.createSite("1", "Nice Bikes")
@@ -101,6 +102,8 @@ func send(ctx *cli.Context) error {
 	addProductAdded(messages, rafalFrame, now())
 	addProductAdded(messages, rafalWheels, now())
 	addProductAdded(messages, rafalSeatPost, now())
+
+	g.Run()
 
 	_, err := post(endpoint, dryRun, messages)
 	if err != nil {
@@ -217,21 +220,65 @@ func addProductAdded(m *c.MessageList, o *c.ProductAddToCart, eventTime string) 
 // Bare object create methods
 
 type generator struct {
-	sites     map[string]*c.SiteCreated
-	customers map[string]*c.CustomerCreated
-	products  map[string]*c.ProductCreated
-	carts     map[string]*c.CartCreated
-	checkouts map[string]*c.CartSuccessfulCheckout
+	endpoint           string
+	dryRun             bool
+	wg                 sync.WaitGroup
+	msgList            *c.MessageList
+	msgMutex           sync.Mutex
+	doneChan           chan bool
+	timeChan, tickChan <-chan time.Time
+	sites              map[string]*c.SiteCreated
+	customers          map[string]*c.CustomerCreated
+	products           map[string]*c.ProductCreated
+	carts              map[string]*c.CartCreated
+	checkouts          map[string]*c.CartSuccessfulCheckout
 }
 
-func NewGenerator() *generator {
+func NewGenerator(endpoint string, dryRun bool) *generator {
 	return &generator{
+		endpoint:  endpoint,
+		dryRun:    dryRun,
+		msgList:   &c.MessageList{},
+		timeChan:  time.NewTimer(time.Second).C,
+		tickChan:  time.NewTicker(time.Second).C,
 		sites:     make(map[string]*c.SiteCreated),
 		customers: make(map[string]*c.CustomerCreated),
 		products:  make(map[string]*c.ProductCreated),
 		carts:     make(map[string]*c.CartCreated),
 		checkouts: make(map[string]*c.CartSuccessfulCheckout),
 	}
+}
+
+// Flush posts the
+func (g *generator) Flush() error {
+	if len(g.msgList.Message) == 0 {
+		return nil
+	}
+	g.msgMutex.Lock()
+	defer g.msgMutex.Unlock()
+	_, err := post(g.endpoint, g.dryRun, g.msgList)
+	if err != nil {
+		return err
+	}
+	return err
+}
+
+func (g *generator) Run() {
+	for {
+		select {
+		case <-g.timeChan:
+			fmt.Println("Timer expired")
+		case <-g.tickChan:
+			fmt.Println("Ticker ticked")
+		case <-g.doneChan:
+			fmt.Println("Done")
+			return
+		}
+	}
+}
+
+func (g *generator) Stop() {
+	g.doneChan <- true
 }
 
 func (g *generator) createSite(id, desc string) *c.SiteCreated {
