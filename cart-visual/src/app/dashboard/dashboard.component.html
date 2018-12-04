@@ -1,14 +1,14 @@
-<fd-tile-grid [col]="3" *ngFor="let cart of carts | async as carts">
-  <fd-tile>
+<fd-tile-grid [col]="3">
+  <fd-tile *ngFor="let cart of carts">
     <fd-tile-media>
           <span fd-identifier
                 [size]="'m'"
-                [glyph]="'home'"
-                [colorAccent]='3'></span>
+                [glyph]="'cart'"
+                [colorAccent]='cart.abandoned ? 3 : 5'></span>
     </fd-tile-media>
     <fd-tile-content>
       <fd-tile-title>
-        Tile Title
+        {{cart.userId}} - {{cart.products.length}} products  - $ {{cart.products.length * 13}}
       </fd-tile-title>
     </fd-tile-content>
   </fd-tile>
