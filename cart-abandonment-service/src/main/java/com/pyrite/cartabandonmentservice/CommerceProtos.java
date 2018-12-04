@@ -11432,6 +11432,967 @@ public final class CommerceProtos {
 
   }
 
+  public interface CartAbandonedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CartAbandoned)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string base_site_id = 1;</code>
+     */
+    java.lang.String getBaseSiteId();
+    /**
+     * <code>string base_site_id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getBaseSiteIdBytes();
+
+    /**
+     * <code>string user_id = 2;</code>
+     */
+    java.lang.String getUserId();
+    /**
+     * <code>string user_id = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserIdBytes();
+
+    /**
+     * <code>string cart_id = 3;</code>
+     */
+    java.lang.String getCartId();
+    /**
+     * <code>string cart_id = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getCartIdBytes();
+
+    /**
+     * <code>string event_time = 4;</code>
+     */
+    java.lang.String getEventTime();
+    /**
+     * <code>string event_time = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getEventTimeBytes();
+  }
+  /**
+   * Protobuf type {@code CartAbandoned}
+   */
+  public  static final class CartAbandoned extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:CartAbandoned)
+      CartAbandonedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CartAbandoned.newBuilder() to construct.
+    private CartAbandoned(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CartAbandoned() {
+      baseSiteId_ = "";
+      userId_ = "";
+      cartId_ = "";
+      eventTime_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CartAbandoned(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              baseSiteId_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userId_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              cartId_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              eventTime_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_CartAbandoned_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_CartAbandoned_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned.class, com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned.Builder.class);
+    }
+
+    public static final int BASE_SITE_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object baseSiteId_;
+    /**
+     * <code>string base_site_id = 1;</code>
+     */
+    public java.lang.String getBaseSiteId() {
+      java.lang.Object ref = baseSiteId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        baseSiteId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string base_site_id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getBaseSiteIdBytes() {
+      java.lang.Object ref = baseSiteId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        baseSiteId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USER_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object userId_;
+    /**
+     * <code>string user_id = 2;</code>
+     */
+    public java.lang.String getUserId() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string user_id = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CART_ID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object cartId_;
+    /**
+     * <code>string cart_id = 3;</code>
+     */
+    public java.lang.String getCartId() {
+      java.lang.Object ref = cartId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        cartId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string cart_id = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCartIdBytes() {
+      java.lang.Object ref = cartId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cartId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EVENT_TIME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object eventTime_;
+    /**
+     * <code>string event_time = 4;</code>
+     */
+    public java.lang.String getEventTime() {
+      java.lang.Object ref = eventTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        eventTime_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string event_time = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEventTimeBytes() {
+      java.lang.Object ref = eventTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        eventTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getBaseSiteIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, baseSiteId_);
+      }
+      if (!getUserIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, userId_);
+      }
+      if (!getCartIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, cartId_);
+      }
+      if (!getEventTimeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, eventTime_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getBaseSiteIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, baseSiteId_);
+      }
+      if (!getUserIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, userId_);
+      }
+      if (!getCartIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, cartId_);
+      }
+      if (!getEventTimeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, eventTime_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned)) {
+        return super.equals(obj);
+      }
+      com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned other = (com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned) obj;
+
+      boolean result = true;
+      result = result && getBaseSiteId()
+          .equals(other.getBaseSiteId());
+      result = result && getUserId()
+          .equals(other.getUserId());
+      result = result && getCartId()
+          .equals(other.getCartId());
+      result = result && getEventTime()
+          .equals(other.getEventTime());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + BASE_SITE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getBaseSiteId().hashCode();
+      hash = (37 * hash) + USER_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserId().hashCode();
+      hash = (37 * hash) + CART_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getCartId().hashCode();
+      hash = (37 * hash) + EVENT_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getEventTime().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CartAbandoned}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CartAbandoned)
+        com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandonedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_CartAbandoned_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_CartAbandoned_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned.class, com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned.Builder.class);
+      }
+
+      // Construct using com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        baseSiteId_ = "";
+
+        userId_ = "";
+
+        cartId_ = "";
+
+        eventTime_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.internal_static_CartAbandoned_descriptor;
+      }
+
+      @java.lang.Override
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned getDefaultInstanceForType() {
+        return com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned build() {
+        com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned buildPartial() {
+        com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned result = new com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned(this);
+        result.baseSiteId_ = baseSiteId_;
+        result.userId_ = userId_;
+        result.cartId_ = cartId_;
+        result.eventTime_ = eventTime_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned) {
+          return mergeFrom((com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned other) {
+        if (other == com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned.getDefaultInstance()) return this;
+        if (!other.getBaseSiteId().isEmpty()) {
+          baseSiteId_ = other.baseSiteId_;
+          onChanged();
+        }
+        if (!other.getUserId().isEmpty()) {
+          userId_ = other.userId_;
+          onChanged();
+        }
+        if (!other.getCartId().isEmpty()) {
+          cartId_ = other.cartId_;
+          onChanged();
+        }
+        if (!other.getEventTime().isEmpty()) {
+          eventTime_ = other.eventTime_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object baseSiteId_ = "";
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public java.lang.String getBaseSiteId() {
+        java.lang.Object ref = baseSiteId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          baseSiteId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getBaseSiteIdBytes() {
+        java.lang.Object ref = baseSiteId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          baseSiteId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public Builder setBaseSiteId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        baseSiteId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public Builder clearBaseSiteId() {
+        
+        baseSiteId_ = getDefaultInstance().getBaseSiteId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string base_site_id = 1;</code>
+       */
+      public Builder setBaseSiteIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        baseSiteId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object userId_ = "";
+      /**
+       * <code>string user_id = 2;</code>
+       */
+      public java.lang.String getUserId() {
+        java.lang.Object ref = userId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string user_id = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserIdBytes() {
+        java.lang.Object ref = userId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string user_id = 2;</code>
+       */
+      public Builder setUserId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string user_id = 2;</code>
+       */
+      public Builder clearUserId() {
+        
+        userId_ = getDefaultInstance().getUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string user_id = 2;</code>
+       */
+      public Builder setUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object cartId_ = "";
+      /**
+       * <code>string cart_id = 3;</code>
+       */
+      public java.lang.String getCartId() {
+        java.lang.Object ref = cartId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          cartId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string cart_id = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCartIdBytes() {
+        java.lang.Object ref = cartId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cartId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string cart_id = 3;</code>
+       */
+      public Builder setCartId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        cartId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string cart_id = 3;</code>
+       */
+      public Builder clearCartId() {
+        
+        cartId_ = getDefaultInstance().getCartId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string cart_id = 3;</code>
+       */
+      public Builder setCartIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        cartId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object eventTime_ = "";
+      /**
+       * <code>string event_time = 4;</code>
+       */
+      public java.lang.String getEventTime() {
+        java.lang.Object ref = eventTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          eventTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string event_time = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEventTimeBytes() {
+        java.lang.Object ref = eventTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          eventTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string event_time = 4;</code>
+       */
+      public Builder setEventTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        eventTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_time = 4;</code>
+       */
+      public Builder clearEventTime() {
+        
+        eventTime_ = getDefaultInstance().getEventTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string event_time = 4;</code>
+       */
+      public Builder setEventTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        eventTime_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:CartAbandoned)
+    }
+
+    // @@protoc_insertion_point(class_scope:CartAbandoned)
+    private static final com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned();
+    }
+
+    public static com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CartAbandoned>
+        PARSER = new com.google.protobuf.AbstractParser<CartAbandoned>() {
+      @java.lang.Override
+      public CartAbandoned parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CartAbandoned(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CartAbandoned> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CartAbandoned> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.pyrite.cartabandonmentservice.CommerceProtos.CartAbandoned getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_descriptor;
   private static final 
@@ -11492,6 +12453,11 @@ public final class CommerceProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ProductRemoveFromCart_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CartAbandoned_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_CartAbandoned_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11539,8 +12505,10 @@ public final class CommerceProtos {
       "\004 \001(\t\022\022\n\nevent_time\030\005 \001(\t\"c\n\025ProductRemo" +
       "veFromCart\022\024\n\014base_site_id\030\001 \001(\t\022\017\n\007cart" +
       "_id\030\002 \001(\t\022\022\n\nproduct_id\030\003 \001(\t\022\017\n\007user_id" +
-      "\030\004 \001(\tB3\n!com.pyrite.cartabandonmentserv" +
-      "iceB\016CommerceProtosb\006proto3"
+      "\030\004 \001(\t\"[\n\rCartAbandoned\022\024\n\014base_site_id\030" +
+      "\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022\017\n\007cart_id\030\003 \001(\t\022" +
+      "\022\n\nevent_time\030\004 \001(\tB3\n!com.pyrite.cartab" +
+      "andonmentserviceB\016CommerceProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11626,6 +12594,12 @@ public final class CommerceProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductRemoveFromCart_descriptor,
         new java.lang.String[] { "BaseSiteId", "CartId", "ProductId", "UserId", });
+    internal_static_CartAbandoned_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_CartAbandoned_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_CartAbandoned_descriptor,
+        new java.lang.String[] { "BaseSiteId", "UserId", "CartId", "EventTime", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
