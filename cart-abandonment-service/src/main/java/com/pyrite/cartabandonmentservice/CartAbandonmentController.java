@@ -14,6 +14,7 @@ package com.pyrite.cartabandonmentservice;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,6 +64,9 @@ public class CartAbandonmentController
 
 		EventUtil.parseMessages(json, eventHandler);
 
+		log.info("Events processed");
+
+
 		return "Processed";
 	}
 
@@ -91,15 +95,16 @@ public class CartAbandonmentController
 
 		CommerceProtos.Carts.Builder cartsBuilder = CommerceProtos.Carts.newBuilder();
 
-		final Map<String, List<CommerceProtos.ProductAddToCart>> carts = eventStorage.getCarts();
-		carts.keySet().forEach(userId -> cartsBuilder.addCart(createCart(userId, carts.get(userId), false)));
+		final Map<String, Set<CommerceProtos.ProductAddToCart>> carts = eventStorage.getCarts();
+		carts.keySet().forEach(userId -> cartsBuilder.addCarts(createCart(userId, carts.get(userId), false)));
 
-		eventStorage.getAbandonedCarts().keySet().forEach(userId -> cartsBuilder.addCart(createCart(userId, carts.get(userId), true)));
+		final Map<String, Set<CommerceProtos.ProductAddToCart>> abandonedCarts = eventStorage.getAbandonedCarts();
+		abandonedCarts.keySet().forEach(userId -> cartsBuilder.addCarts(createCart(userId, abandonedCarts.get(userId), true)));
 
 		return printer.print(cartsBuilder.build());
 	}
 
-	private CommerceProtos.Cart createCart(String userId, List<CommerceProtos.ProductAddToCart> products, final boolean abandoned)
+	private CommerceProtos.Cart createCart(String userId, Set<CommerceProtos.ProductAddToCart> products, final boolean abandoned)
 	{
 		return CommerceProtos.Cart.newBuilder().setUserId(userId).setAbandoned(abandoned).addAllProducts(products).build();
 	}

@@ -14,9 +14,11 @@ package com.pyrite.cartabandonmentservice;
 import static com.pyrite.cartabandonmentservice.CommerceProtos.ProductAddToCart;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +27,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventStorage
 {
-	private Map<String, List<ProductAddToCart>> carts = new LinkedHashMap<>();
-	private Map<String, List<ProductAddToCart>> abandonedCarts = new LinkedHashMap<>();
+	private Map<String, Set<ProductAddToCart>> carts = new LinkedHashMap<>();
+	private Map<String, Set<ProductAddToCart>> abandonedCarts = new LinkedHashMap<>();
 
 	private static final Logger log = LoggerFactory.getLogger(AbandonmentScheduler.class);
 
@@ -41,7 +43,7 @@ public class EventStorage
 		}
 		else
 		{
-			final ArrayList<ProductAddToCart> events = new ArrayList<>();
+			final HashSet<ProductAddToCart> events = new HashSet<>();
 			events.add(event);
 			carts.put(userId, events);
 		}
@@ -55,31 +57,31 @@ public class EventStorage
 		}
 	}
 
-	public Map<String, List<ProductAddToCart>> getCarts()
+	public Map<String, Set<ProductAddToCart>> getCarts()
 	{
 		return carts;
 	}
 
 
 
-	public Map<String, List<ProductAddToCart>> getAbandonedCarts()
+	public Map<String, Set<ProductAddToCart>> getAbandonedCarts()
 	{
 		return abandonedCarts;
 	}
 
-	public void addToAbandonedCarts(final String userId, final List<ProductAddToCart> event)
+	public void addToAbandonedCarts(final String userId, final Set<ProductAddToCart> event)
 	{
 		log.debug("Product added to abandoned cart: " + event.toString());
 
-		if (carts.containsKey(userId))
+		if (abandonedCarts.containsKey(userId))
 		{
-			carts.get(userId).addAll(event);
+			abandonedCarts.get(userId).addAll(event);
 		}
 		else
 		{
-			final ArrayList<ProductAddToCart> events = new ArrayList<>();
+			final Set<ProductAddToCart> events = new HashSet<>();
 			events.addAll(event);
-			carts.put(userId, events);
+			abandonedCarts.put(userId, events);
 		}
 	}
 }

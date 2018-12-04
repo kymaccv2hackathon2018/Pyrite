@@ -106,7 +106,7 @@ message CartAbandoned {
 }
 
 message Carts {
-    repeated Cart cart = 1;
+    repeated Cart carts = 1 [json_name = "carts"];
 }
 
 message Cart {
