@@ -40,16 +40,16 @@ public class AbandonmentScheduler
 	public void doThis()
 	{
 		log.warn("ABANDONMENT SCHEDULER TRIGGERED");
-		final Map<String, List<CommerceProtos.ProductAddToCart>> userEvents = eventStorage.getCarts();
+		final Map<String, Set<CommerceProtos.ProductAddToCart>> userEvents = eventStorage.getCarts();
 
 		final Set<String> users = userEvents.keySet();
 
 		users.forEach(user -> evaluateUserCart(user, userEvents));
 	}
 
-	private void evaluateUserCart(final String userId, final Map<String, List<CommerceProtos.ProductAddToCart>> userEvents)
+	private void evaluateUserCart(final String userId, final Map<String, Set<CommerceProtos.ProductAddToCart>> userEvents)
 	{
-		final List<CommerceProtos.ProductAddToCart> products = userEvents.get(userId);
+		final Set<CommerceProtos.ProductAddToCart> products = userEvents.get(userId);
 		final Optional<Date> activeProductsInCart = products.stream().map(p -> {
 			try
 			{
