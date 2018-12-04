@@ -60,6 +60,13 @@ public class EventStorage
 		return carts;
 	}
 
+
+
+	public Map<String, List<ProductAddToCart>> getAbandonedCarts()
+	{
+		return abandonedCarts;
+	}
+
 	public void addToAbandonedCarts(final String userId, final List<ProductAddToCart> event)
 	{
 		log.debug("Product added to abandoned cart: " + event.toString());
