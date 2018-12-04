@@ -13,7 +13,7 @@ package com.pyrite.cartabandonmentservice;
 
 import static com.pyrite.cartabandonmentservice.CommerceProtos.ProductAddToCart;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +40,9 @@ public class EventStorage
 		}
 		else
 		{
-			userEvents.put(userId, Arrays.asList(event));
+			final ArrayList<Object> events = new ArrayList<>();
+			events.add(event);
+			userEvents.put(userId, events);
 		}
 	}
 
