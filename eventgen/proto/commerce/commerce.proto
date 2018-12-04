@@ -96,3 +96,10 @@ message ProductRemoveFromCart {
     string product_id = 3;
     string user_id = 4;
 }
+
+message CartAbandoned {
+    string base_site_id = 1;
+    string user_id = 2;
+    string cart_id = 3;
+    string event_time = 4;
+}
