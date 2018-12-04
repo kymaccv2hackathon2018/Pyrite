@@ -70,7 +70,7 @@ public class CartAbandonmentEventHandler implements EventUtil.Handler
 	public void handleCartSuccessfulCheckout(final CommerceProtos.Message message, final CommerceProtos.CartSuccessfulCheckout e)
 	{
 		messages.put(e, message);
-		eventStorage.successfulCheckout(e.getUserId());
+		eventStorage.removeByUser(e.getUserId());
 	}
 
 	/**
