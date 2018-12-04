@@ -60,6 +60,6 @@ public class CartAbandonmentEventHandler implements EventUtil.Handler
 	@Override
 	public void handleCartSuccessfulCheckout(final CommerceProtos.Message message, final CommerceProtos.CartSuccessfulCheckout e)
 	{
-		eventStorage.successfulCheckout(e.getUserId());
+		eventStorage.removeByUser(e.getUserId());
 	}
 }

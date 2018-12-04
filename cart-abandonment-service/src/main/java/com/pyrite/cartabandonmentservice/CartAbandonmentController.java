@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.MessageOrBuilder;
 import com.google.protobuf.util.JsonFormat;
 
 @RestController
@@ -71,13 +70,13 @@ public class CartAbandonmentController
 
 		StringBuilder responseBuilder = new StringBuilder();
 
-		final Map<String, List<Object>> userEvents = eventStorage.getUserEvents();
+		final Map<String, List<CommerceProtos.ProductAddToCart>> userEvents = eventStorage.getCarts();
 		userEvents.values().stream().forEach(value -> {
 
 			value.stream().forEach(cart -> {
 				try
 				{
-					responseBuilder.append(printer.print((MessageOrBuilder) cart));
+					responseBuilder.append(printer.print(cart));
 				}
 				catch (InvalidProtocolBufferException e)
 				{
