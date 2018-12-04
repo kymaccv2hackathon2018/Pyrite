@@ -48,6 +48,7 @@ message CustomerCreated {
     string store_id = 3;
     string email = 4; // fake field
     string name = 5;
+    bool active = 6;
 }
 
 message SiteCreated {
