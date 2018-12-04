@@ -94,7 +94,8 @@ public class CartAbandonmentController
 		final Map<String, List<CommerceProtos.ProductAddToCart>> carts = eventStorage.getCarts();
 		carts.keySet().forEach(userId -> cartsBuilder.addCarts(createCart(userId, carts.get(userId), false)));
 
-		eventStorage.getAbandonedCarts().keySet().forEach(userId -> cartsBuilder.addCarts(createCart(userId, carts.get(userId), true)));
+		final Map<String, List<CommerceProtos.ProductAddToCart>> abandonedCarts = eventStorage.getAbandonedCarts();
+		abandonedCarts.keySet().forEach(userId -> cartsBuilder.addCarts(createCart(userId, abandonedCarts.get(userId), true)));
 
 		return printer.print(cartsBuilder.build());
 	}

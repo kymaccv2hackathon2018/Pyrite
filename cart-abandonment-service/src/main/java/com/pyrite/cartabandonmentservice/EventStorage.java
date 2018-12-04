@@ -71,15 +71,15 @@ public class EventStorage
 	{
 		log.debug("Product added to abandoned cart: " + event.toString());
 
-		if (carts.containsKey(userId))
+		if (abandonedCarts.containsKey(userId))
 		{
-			carts.get(userId).addAll(event);
+			abandonedCarts.get(userId).addAll(event);
 		}
 		else
 		{
 			final ArrayList<ProductAddToCart> events = new ArrayList<>();
 			events.addAll(event);
-			carts.put(userId, events);
+			abandonedCarts.put(userId, events);
 		}
 	}
 }

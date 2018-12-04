@@ -12,7 +12,6 @@
 package com.pyrite.cartabandonmentservice;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -21,7 +20,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +36,7 @@ public class AbandonmentScheduler
 
 	private static final Logger log = LoggerFactory.getLogger(AbandonmentScheduler.class);
 
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-
-	@Scheduled(fixedRate = 15000)
+	@Scheduled(fixedRate = 30000)
 	public void doThis()
 	{
 		log.warn("ABANDONMENT SCHEDULER TRIGGERED");
@@ -80,9 +76,6 @@ public class AbandonmentScheduler
 
 	public Date parseDate(final String date) throws ParseException
 	{
-//		return DateUtils.parseDate(date,
-//				new String[]{DateTimeFormatter.ISO_DATE_TIME});
-
 		final ZonedDateTime zonedDateTime = ZonedDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME);
 		return Date.from(zonedDateTime.toInstant());
 	}
