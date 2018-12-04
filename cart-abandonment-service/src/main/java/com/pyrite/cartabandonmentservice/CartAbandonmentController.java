@@ -14,10 +14,13 @@ package com.pyrite.cartabandonmentservice;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,13 +29,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.MessageOrBuilder;
 import com.google.protobuf.util.JsonFormat;
 
 @RestController
 @RequestMapping("/cartAbandonment")
 public class CartAbandonmentController
 {
+	private static final Logger log = LoggerFactory.getLogger(CartAbandonmentController.class);
+
 	@Autowired
 	private CartAbandonmentEventHandler eventHandler;
 	@Autowired
@@ -60,33 +64,50 @@ public class CartAbandonmentController
 
 		EventUtil.parseMessages(json, eventHandler);
 
+		log.info("Events processed");
+
+
 		return "Processed";
 	}
 
-	@GetMapping("/events")
+
+	/**
+	 * Recieve notification of an event.  The lambda will call this function.
+	 */
+	@PostMapping("/event")
 	@ResponseBody
-	public String getEvents()
+	public String event(final HttpServletRequest request) throws IOException
+	{
+		final String json = IOUtils.toString(request.getInputStream(), "UTF-8");
+
+		EventUtil.parseMessage(json, eventHandler);
+
+		log.info("Event processed {}", json);
+
+		return "Event successfully processed.";
+	}
+
+	@GetMapping("/carts")
+	@ResponseBody
+	public String getCarts() throws InvalidProtocolBufferException
 	{
 		final JsonFormat.Printer printer = JsonFormat.printer().includingDefaultValueFields();
 
-		StringBuilder responseBuilder = new StringBuilder();
+		CommerceProtos.Carts.Builder cartsBuilder = CommerceProtos.Carts.newBuilder();
 
-		final Map<String, List<Object>> userEvents = eventStorage.getUserEvents();
-		userEvents.values().stream().forEach(value -> {
+		final Map<String, Set<CommerceProtos.ProductAddToCart>> carts = eventStorage.getCarts();
+		carts.keySet().forEach(userId -> cartsBuilder.addCarts(createCart(userId, carts.get(userId), false)));
 
-			value.stream().forEach(cart -> {
-				try
-				{
-					responseBuilder.append(printer.print((MessageOrBuilder) cart));
-				}
-				catch (InvalidProtocolBufferException e)
-				{
-					e.printStackTrace();
-				}
-			});
-		});
+		final Map<String, Set<CommerceProtos.ProductAddToCart>> abandonedCarts = eventStorage.getAbandonedCarts();
+		abandonedCarts.keySet().forEach(userId -> cartsBuilder.addCarts(createCart(userId, abandonedCarts.get(userId), true)));
 
-		return responseBuilder.toString();
+		return printer.print(cartsBuilder.build());
+	}
+
+	private CommerceProtos.Cart createCart(String userId, Set<CommerceProtos.ProductAddToCart> products, final boolean abandoned)
+	{
+		return CommerceProtos.Cart.newBuilder().setUserId(userId).setAbandoned(abandoned).addAllProducts(products).build();
 	}
 }
+
 

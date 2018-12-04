@@ -11,7 +11,14 @@
  */
 package com.pyrite.cartabandonmentservice;
 
-import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,16 +29,64 @@ import org.springframework.stereotype.Component;
 @Component
 public class AbandonmentScheduler
 {
+	public static final int ABANDONED_CART_TIME = 15000;
 	@Autowired
 	private EventStorage eventStorage;
 
+
 	private static final Logger log = LoggerFactory.getLogger(AbandonmentScheduler.class);
-	
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
 	@Scheduled(fixedRate = 5000)
 	public void doThis()
 	{
-		log.warn("ABANDONMENT SCHEDULER TEST");
+		log.warn("ABANDONMENT SCHEDULER TRIGGERED");
+		final Map<String, Set<CommerceProtos.ProductAddToCart>> userEvents = eventStorage.getCarts();
+
+		final Set<String> users = userEvents.keySet();
+
+		users.forEach(user -> evaluateUserCart(user, userEvents));
+	}
+
+	private void evaluateUserCart(final String userId, final Map<String, Set<CommerceProtos.ProductAddToCart>> userEvents)
+	{
+		final Set<CommerceProtos.ProductAddToCart> products = userEvents.get(userId);
+		final Optional<Date> activeProductsInCart = products.stream().map(p -> {
+			try
+			{
+				return parseDate(p.getEventTime());
+			}
+			catch (ParseException e)
+			{
+				e.printStackTrace();
+			}
+			return null;
+		}).filter(date -> productDateActive(date)).findAny();
+
+
+		if (!activeProductsInCart.isPresent())
+		{
+			log.warn("Abandoning Cart for user: " + userId);
+			// remove userId from event map
+			eventStorage.removeByUser(userId);
+			// add userId to abandoned map
+			eventStorage.addToAbandonedCarts(userId, products);
+			// generate event
+		}
+	}
+
+	public Date parseDate(final String date) throws ParseException
+	{
+		final ZonedDateTime zonedDateTime = ZonedDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME);
+		return Date.from(zonedDateTime.toInstant());
+	}
+
+	private boolean productDateActive(final Date date)
+	{
+		final long timeDifferenceInMs = System.currentTimeMillis() - date.getTime();
+		if (timeDifferenceInMs < ABANDONED_CART_TIME)
+		{
+			return true;
+		}
+		return false;
 	}
 }

@@ -87,7 +87,7 @@ message ProductAddToCart {
     string cart_id = 2;
     string product_id = 3;
     string user_id = 4;
-    string event_time = 5;    
+    string event_time = 5;
 }
 
 message ProductRemoveFromCart {
@@ -102,4 +102,14 @@ message CartAbandoned {
     string user_id = 2;
     string cart_id = 3;
     string event_time = 4;
+}
+
+message Carts {
+    repeated Cart carts = 1 [json_name = "carts"];
+}
+
+message Cart {
+    string user_id = 2;
+    bool abandoned = 3;
+    repeated ProductAddToCart products = 4;
 }

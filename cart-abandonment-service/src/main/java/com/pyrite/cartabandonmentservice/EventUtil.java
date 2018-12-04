@@ -1,11 +1,12 @@
 package com.pyrite.cartabandonmentservice;
 
+import java.util.Collection;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
 
 public class EventUtil
 {
-
     private static final JsonFormat.Printer printer = JsonFormat.printer().includingDefaultValueFields();
     
     /**
@@ -85,6 +86,18 @@ public class EventUtil
         }
     }
 
+    public static void appendAll(CommerceProtos.MessageList.Builder msgList, Collection<Object> events) {
+        for (final Object e : events) {
+            append(msgList, e);
+        }
+    }
+
+    public static void append(CommerceProtos.MessageList.Builder msgList, Object event) {
+        if (event instanceof CommerceProtos.ProductAddToCart) {
+            msgList.addMessage(CommerceProtos.Message.newBuilder().build());
+        }
+    }
+    
 	/**
 	 * Main entrypoint can be used to play around with json string parsing/formatting.
 	 *

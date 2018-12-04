@@ -14,9 +14,11 @@ package com.pyrite.cartabandonmentservice;
 import static com.pyrite.cartabandonmentservice.CommerceProtos.ProductAddToCart;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +27,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventStorage
 {
-	private Map<String, List<Object>> userEvents = new LinkedHashMap<>();
+	private Map<String, Set<ProductAddToCart>> carts = new LinkedHashMap<>();
+	private Map<String, Set<ProductAddToCart>> abandonedCarts = new LinkedHashMap<>();
 
 	private static final Logger log = LoggerFactory.getLogger(AbandonmentScheduler.class);
 
@@ -34,30 +37,51 @@ public class EventStorage
 	{
 		log.debug("Product added to cart: " + event.toString());
 
-		if (userEvents.containsKey(userId))
+		if (carts.containsKey(userId))
 		{
-			userEvents.get(userId).add(event);
+			carts.get(userId).add(event);
 		}
 		else
 		{
-			final ArrayList<Object> events = new ArrayList<>();
+			final HashSet<ProductAddToCart> events = new HashSet<>();
 			events.add(event);
-			userEvents.put(userId, events);
+			carts.put(userId, events);
 		}
 	}
 
-	public void successfulCheckout(final String userId)
+	public void removeByUser(final String userId)
 	{
-		log.debug("Successful checkout for user: " + userId);
-
-		if (userEvents.containsKey(userId))
+		if (carts.containsKey(userId))
 		{
-			userEvents.remove(userId);
+			carts.remove(userId);
 		}
 	}
 
-	public Map<String, List<Object>> getUserEvents()
+	public Map<String, Set<ProductAddToCart>> getCarts()
 	{
-		return userEvents;
+		return carts;
+	}
+
+
+
+	public Map<String, Set<ProductAddToCart>> getAbandonedCarts()
+	{
+		return abandonedCarts;
+	}
+
+	public void addToAbandonedCarts(final String userId, final Set<ProductAddToCart> event)
+	{
+		log.debug("Product added to abandoned cart: " + event.toString());
+
+		if (abandonedCarts.containsKey(userId))
+		{
+			abandonedCarts.get(userId).addAll(event);
+		}
+		else
+		{
+			final Set<ProductAddToCart> events = new HashSet<>();
+			events.addAll(event);
+			abandonedCarts.put(userId, events);
+		}
 	}
 }
