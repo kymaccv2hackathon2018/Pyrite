@@ -17,10 +17,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,7 +67,6 @@ public class CartAbandonmentController
 	}
 
 
-
 	/**
 	 * Recieve notification of an event.  The lambda will call this function.
 	 */
@@ -87,29 +85,24 @@ public class CartAbandonmentController
 
 	@GetMapping("/carts")
 	@ResponseBody
-	public String getCarts()
+	public String getCarts() throws InvalidProtocolBufferException
 	{
 		final JsonFormat.Printer printer = JsonFormat.printer().includingDefaultValueFields();
 
-		StringBuilder responseBuilder = new StringBuilder();
+		CommerceProtos.Carts.Builder cartsBuilder = CommerceProtos.Carts.newBuilder();
 
-		final Map<String, List<CommerceProtos.ProductAddToCart>> userEvents = eventStorage.getCarts();
-		userEvents.values().stream().forEach(value -> {
+		final Map<String, List<CommerceProtos.ProductAddToCart>> carts = eventStorage.getCarts();
+		carts.keySet().forEach(userId -> cartsBuilder.addCart(createCart(userId, carts.get(userId), false)));
 
-			value.stream().forEach(cart -> {
-				try
-				{
-					responseBuilder.append(printer.print(cart));
-				}
-				catch (InvalidProtocolBufferException e)
-				{
-					e.printStackTrace();
-				}
-			});
-		});
+		eventStorage.getAbandonedCarts().keySet().forEach(userId -> cartsBuilder.addCart(createCart(userId, carts.get(userId), true)));
 
-		return responseBuilder.toString();
-	}	
+		return printer.print(cartsBuilder.build());
+	}
+
+	private CommerceProtos.Cart createCart(String userId, List<CommerceProtos.ProductAddToCart> products, final boolean abandoned)
+	{
+		return CommerceProtos.Cart.newBuilder().setUserId(userId).setAbandoned(abandoned).addAllProducts(products).build();
+	}
 }
 
 
