@@ -29,14 +29,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class AbandonmentScheduler
 {
-	public static final int ABANDONED_CART_TIME = 120000;
+	public static final int ABANDONED_CART_TIME = 15000;
 	@Autowired
 	private EventStorage eventStorage;
 
 
 	private static final Logger log = LoggerFactory.getLogger(AbandonmentScheduler.class);
 
-	@Scheduled(fixedRate = 30000)
+	@Scheduled(fixedRate = 5000)
 	public void doThis()
 	{
 		log.warn("ABANDONMENT SCHEDULER TRIGGERED");
