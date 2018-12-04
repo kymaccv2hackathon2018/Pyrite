@@ -40,6 +40,12 @@ public class CartAbandonmentEventHandler implements EventUtil.Handler
 	}
 
 	@Override
+	public void handleCartCreated(final CommerceProtos.Message message, final CommerceProtos.CartCreated e)
+	{
+		
+	}
+
+	@Override
 	public void handleCustomerCreated(final CommerceProtos.Message message, final CustomerCreated e)
 	{
 

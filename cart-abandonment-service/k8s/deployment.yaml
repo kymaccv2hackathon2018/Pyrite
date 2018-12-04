@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: cart-abandonment
-        image: pyrite.azurecr.io/cart-abandonment-service@sha256:5e456334c9350d55909fb4e5c5b01805504a16d6e0a3952743b42a34b72465bd
+        image: pyrite.azurecr.io/cart-abandonment-service@sha256:0efbeca5a1236173a6fa5f937fc65057e94e019c18292fc9b3c8d2eb665ddd42
         imagePullPolicy: Always
         ports:
         - containerPort: 9876
