@@ -61,29 +61,30 @@ func send(ctx *cli.Context) error {
 	dryRun := ctx.Bool("dry_run")
 
 	// printEnvVars()
+	g := NewGenerator()
 
 	// Populate sites
-	bikes := createSite("1", "Nice Bikes")
+	bikes := g.createSite("1", "Nice Bikes")
 
 	// Populate products
-	frame := createProduct("1", "Carbon Fiber Frame")
-	wheels := createProduct("2", "Carbon Fiber Wheels")
-	seatPost := createProduct("3", "Carbin Fiber Seatpost")
+	frame := g.createProduct("1", "Carbon Fiber Frame")
+	wheels := g.createProduct("2", "Carbon Fiber Wheels")
+	seatPost := g.createProduct("3", "Carbin Fiber Seatpost")
 
 	// Populate users
-	rafal := createCustomer("1", "Rafal", "rafal@example.com")
-	// yoni := createCustomer("2", "Yoni", "yoni@example.com")
-	// mike := createCustomer("3", "Mike", "mike@example.com")
+	rafal := g.createCustomer("1", "Rafal", "rafal@example.com")
+	// yoni := g.createCustomer("2", "Yoni", "yoni@example.com")
+	// mike := g.createCustomer("3", "Mike", "mike@example.com")
 
 	// Populate carts
-	rafalCart := createCart(bikes, rafal, "1")
-	// yoniCart := createCart(bikes, yoni, "2")
-	// mikeCart := createCart(bikes, mike, "3")
+	rafalCart := g.createCart(bikes, rafal, "1")
+	// yoniCart := g.createCart(bikes, yoni, "2")
+	// mikeCart := g.createCart(bikes, mike, "3")
 
 	// Add products to carts
-	rafalFrame := addProductToCart(rafal, rafalCart, frame, now())
-	rafalWheels := addProductToCart(rafal, rafalCart, wheels, now())
-	rafalSeatPost := addProductToCart(rafal, rafalCart, seatPost, now())
+	rafalFrame := g.addProductToCart(rafal, rafalCart, frame, now())
+	rafalWheels := g.addProductToCart(rafal, rafalCart, wheels, now())
+	rafalSeatPost := g.addProductToCart(rafal, rafalCart, seatPost, now())
 
 	messages := &c.MessageList{}
 
@@ -215,50 +216,79 @@ func addProductAdded(m *c.MessageList, o *c.ProductAddToCart, eventTime string) 
 
 // Bare object create methods
 
-func createSite(id, desc string) *c.SiteCreated {
-	return &c.SiteCreated{
+type generator struct {
+	sites     map[string]*c.SiteCreated
+	customers map[string]*c.CustomerCreated
+	products  map[string]*c.ProductCreated
+	carts     map[string]*c.CartCreated
+	checkouts map[string]*c.CartSuccessfulCheckout
+}
+
+func NewGenerator() *generator {
+	return &generator{
+		sites:     make(map[string]*c.SiteCreated),
+		customers: make(map[string]*c.CustomerCreated),
+		products:  make(map[string]*c.ProductCreated),
+		carts:     make(map[string]*c.CartCreated),
+		checkouts: make(map[string]*c.CartSuccessfulCheckout),
+	}
+}
+
+func (g *generator) createSite(id, desc string) *c.SiteCreated {
+	item := &c.SiteCreated{
 		SiteId:      id,
 		Description: desc,
 	}
+	g.sites[id] = item
+	return item
 }
 
-func createProduct(id, desc string) *c.ProductCreated {
-	return &c.ProductCreated{
+func (g *generator) createProduct(id, desc string) *c.ProductCreated {
+	item := &c.ProductCreated{
 		ProductId:   id,
 		Description: desc,
 	}
+	g.products[id] = item
+	return item
 }
 
-func createCustomer(id, name, email string) *c.CustomerCreated {
-	return &c.CustomerCreated{
+func (g *generator) createCustomer(id, name, email string) *c.CustomerCreated {
+	item := &c.CustomerCreated{
 		CustomerId:  id,
 		CustomerUid: id,
 		Name:        name,
 		Email:       email,
 	}
+	g.customers[id] = item
+	return item
 }
 
-func createCart(site *c.SiteCreated, customer *c.CustomerCreated, id string) *c.CartCreated {
-	return &c.CartCreated{
+func (g *generator) createCart(site *c.SiteCreated, customer *c.CustomerCreated, id string) *c.CartCreated {
+	item := &c.CartCreated{
 		CartId:     id,
 		BaseSiteId: site.SiteId,
 	}
+	g.carts[id] = item
+	return item
 }
 
-func createCartSuccessfulCheckout(
+func (g *generator) createCartSuccessfulCheckout(
 	site *c.SiteCreated,
 	customer *c.CustomerCreated,
 	cart *c.CartCreated, product *c.ProductCreated) *c.CartSuccessfulCheckout {
 
-	return &c.CartSuccessfulCheckout{
+	item := &c.CartSuccessfulCheckout{
 		BaseSiteId: site.SiteId,
 		CartId:     cart.CartId,
 		UserId:     customer.CustomerId,
 	}
 
+	key := fmt.Sprintf("%s.%s.%s", site.SiteId, cart.CartId, customer.CustomerId)
+	g.checkouts[key] = item
+	return item
 }
 
-func addProductToCart(customer *c.CustomerCreated, cart *c.CartCreated, product *c.ProductCreated, eventTime string) *c.ProductAddToCart {
+func (g *generator) addProductToCart(customer *c.CustomerCreated, cart *c.CartCreated, product *c.ProductCreated, eventTime string) *c.ProductAddToCart {
 	return &c.ProductAddToCart{
 		BaseSiteId: cart.BaseSiteId,
 		CartId:     cart.CartId,
