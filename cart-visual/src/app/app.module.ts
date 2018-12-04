@@ -6,6 +6,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { FundamentalNgxModule } from 'fundamental-ngx';
+import {ServicesModule} from './services/services.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FundamentalNgxModule } from 'fundamental-ngx';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FundamentalNgxModule
+    FundamentalNgxModule,
+    ServicesModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
