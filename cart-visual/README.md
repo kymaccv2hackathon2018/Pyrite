@@ -43,3 +43,6 @@ To expose the UI inside of Kyma
 Update the ./deploy/microfrontend.yaml to point to the URL that exposes the UI.
 
 Run `kubectl apply -f ./deploy/microfrontend.yaml -n <namespace>`
+
+## Issues
+Currently, the networking isn't fully implemented so the service calls to the REST API will fail with a CORS error. Adding a virtual service to the cluster that correctly maps the requests to the correct service, should resolve this.
