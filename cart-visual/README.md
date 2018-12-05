@@ -25,3 +25,21 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Deploy
+
+Follow the build instructions, then you can dockerize the project and update the ./deploy/deployment.yaml with the image tag used.
+
+Run `docker build -t <repo:tag> -f ./deploy/Dockerfile .`
+
+Push the docker image to your docker registry and update the `image:` attribute in the ./deploy/deployment.yaml.
+
+Run `kubectl apply -f ./deploy/deployment.yaml -n <namespace>`
+
+### Microfrontend for Kyma
+
+To expose the UI inside of Kyma
+
+Update the ./deploy/microfrontend.yaml to point to the URL that exposes the UI.
+
+Run `kubectl apply -f ./deploy/microfrontend.yaml -n <namespace>`

@@ -1,0 +1,9 @@
+apiVersion: applicationconnector.kyma-project.io/v1alpha1
+kind: EventActivation
+metadata:
+  name: cart-abandoned-activation
+  labels:
+    app: cart-abandoned-activation
+spec:
+  displayName: Cart Abandonment
+  sourceId: cart.abandoned

@@ -1,0 +1,16 @@
+apiVersion: eventing.kyma.cx/v1alpha1
+kind: Subscription
+metadata:
+  labels:
+    Function: process-abandoned-cart
+  name: lambda-process-abandoned-cart-cart.abandoned-v1
+  namespace: stage
+spec:
+  endpoint: http://process-abandoned-cart.stage:8080/
+  event_type: cart.abandoned
+  event_type_version: v1
+  include_subscription_name_header: true
+  max_inflight: 400
+  push_request_timeout_ms: 2000
+  source_id: cart.abandoned
+

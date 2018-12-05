@@ -11,7 +11,7 @@ import {CartModel} from '../model/cart.model';
 })
 export class DashboardComponent implements OnInit {
 
-  protected carts: CartModel[];
+  carts: CartModel[];
 
   private refreshInterval = 5000;
 

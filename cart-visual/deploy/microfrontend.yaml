@@ -1,0 +1,13 @@
+apiVersion: ui.kyma-project.io/v1alpha1
+kind: MicroFrontend
+metadata:
+  name: cart-visual-microfrontend
+spec:
+  appName: cart-visual
+  category: Cart Monitoring
+  displayName: Abandoned Cart Monitor
+  navigationNodes:
+    - label: Abandoned Cart Monitor
+      navigationPath: cart-visual
+      showInNavigation: true
+      viewUrl: https://cart-visual.sa-hackathon-10.cluster.extend.sap.cx/
